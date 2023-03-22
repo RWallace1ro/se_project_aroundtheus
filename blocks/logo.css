@@ -2,5 +2,12 @@
   display: flex;
   max-width: 173px;
   height: 33px;
-  align-items: flex-start;
+}
+
+@media screen and (max-width: 480px) {
+  .logo {
+    max-width: 126px;
+    height: 24px;
+    margin-left: 19px;
+  }
 }

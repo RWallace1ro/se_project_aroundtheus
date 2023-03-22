@@ -19,3 +19,28 @@ This project is made so all the elements are displayed correctly on popular scre
 The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster.
 
 Good luck and have fun!
+
+#Project 3: Around the U. S.
+
+###Overview
+
+-Introduction
+-Project features
+-Future of the project
+
+**Introduction**
+
+This is the third project of the Web Development program at Practicum. It was created using HTML and CSS based on a Figma design.
+
+#Project Features
+
+-Semantic HTML
+-Media queries
+-Responsive Web design
+-Interactive page
+-Grid Layout
+-Flat BEM
+
+##Future of the project
+
+This is Stage 1 of a series of development activities for this project.
