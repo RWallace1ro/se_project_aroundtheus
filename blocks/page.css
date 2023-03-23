@@ -15,10 +15,3 @@
   margin: 0 auto;
   width: calc(100% - 38px);
 }
-
-/*@media screen and (max-width: 480px) {
-  .page__section {
-    /*width: calc(100% - 38px);*/
-/*max-width: 100%;
-  }
-}*/
