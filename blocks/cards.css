@@ -1,11 +1,8 @@
 .cards {
-  font-family: "Inter", Arial, sans-serif;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 24px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  line-height: 29px;
 }
 
 .cards__list {
@@ -15,12 +12,4 @@
   padding: 0;
   margin: 0;
   grid-template-columns: repeat(auto-fit, 282px);
-  margin-top: 47px;
-}
-
-@media screen and (max-width: 480px) {
-  .cards__list {
-    margin-left: 19px;
-    margin-right: 19px;
-  }
 }

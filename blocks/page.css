@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  margin: 0;
 }
 
 .page__section {
@@ -12,20 +13,12 @@
   width: 100%;
   position: relative;
   margin: 0 auto;
+  width: calc(100% - 38px);
 }
 
-@media screen and (min-width: 480px) and (max-width: 800px) {
+@media screen and (max-width: 480px) {
   .page__section {
-    margin-right: 19px;
-    margin-left: 19px;
     width: calc(100% - 38px);
     max-width: 100%;
-  }
-}
-@media screen and (max-width: 480px) {
-  .page {
-    width: 100%;
-    margin: 0;
-    overflow: hidden;
   }
 }
