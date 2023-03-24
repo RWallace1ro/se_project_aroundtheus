@@ -23,3 +23,5 @@ This is the third project of the Web Development program at Practicum. It was cr
 ##Future of the project
 
 This is Stage 1 of a series of development activities for this project.
+
+Link to GitHub Pages -https://rwallace1ro.github.io/se_project_aroundtheus/

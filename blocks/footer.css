@@ -11,7 +11,9 @@
 
 .footer__copyright {
   max-width: 318px;
-  height: 18px;
+  min-height: 18px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 @media screen and (max-width: 480px) {

@@ -1,8 +1,6 @@
 .cards {
   display: flex;
   flex-direction: column;
-  list-style-type: none;
-  line-height: 29px;
 }
 
 .cards__list {
@@ -12,4 +10,5 @@
   padding: 0;
   margin: 0;
   grid-template-columns: repeat(auto-fit, 282px);
+  list-style-type: none;
 }
