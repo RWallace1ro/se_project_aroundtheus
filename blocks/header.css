@@ -13,7 +13,7 @@
   }
 }
 
-@media screen and (max-width: 780x) {
+@media screen and (max-width: 780px) {
   .header {
     margin: 0;
     border-bottom: 100%;
