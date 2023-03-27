@@ -122,7 +122,7 @@
   }
 
   .profile__edit-button {
-    box-sizing: border-box;
+    background-size: border-box;
   }
 
   .profile__description {
