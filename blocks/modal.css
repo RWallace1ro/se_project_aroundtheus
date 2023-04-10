@@ -13,6 +13,10 @@
   display: none;
 }
 
+.model__form {
+  max-width: 430px;
+}
+
 .modal__opened {
   display: flex;
 }
@@ -25,7 +29,6 @@
   flex-basis: min-content;
   max-width: 430px;
 }
-
 .modal__close {
   border: none;
   background-color: transparent;
