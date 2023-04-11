@@ -41,6 +41,8 @@
   width: 21px;
   height: 18px;
   border-style: none;
+  color: #000;
+  transition: all 0.5s;
 }
 
 .card__like-button:hover {

@@ -21,6 +21,7 @@
   height: 24px;
   margin-left: 18px;
   border: 1px solid #fff;
+  transition: 0.5s;
 }
 
 .profile__edit-button:hover {
@@ -35,6 +36,7 @@
   margin-left: auto;
   border-radius: 2px;
   border: 2px solid #fff;
+  transition: 0.5s;
 }
 
 .profile__add-button:hover {

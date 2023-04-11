@@ -32,7 +32,7 @@ const initialCards = [
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditCloseButton = profileEditModal.querySelector(".modal__close");
-const profileEditCloseModal = document.querySelector("#profile-edit-modal");
+//const profileEditCloseModal = document.querySelector("#profile-edit-modal");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const profileTitleInput = document.querySelector("#profile-title-input");
@@ -48,7 +48,11 @@ const cardTemplate =
 /*                                                Functions                                                */
 /*---------------------------------------------------------------------------------------------------------*/
 function closePopup() {
-  profileEditCloseModal.classList.remove("modal__opened");
+  profileEditModal.classList.remove("modal__opened");
+}
+
+function openPopup() {
+  profileEditModal.classList.add("modal__opened");
 }
 
 function getCardElement(cardData) {
@@ -63,6 +67,11 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
+function fillProfileForm() {
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+}
+
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Handlers                                           */
 /*---------------------------------------------------------------------------------------------------------*/
@@ -75,11 +84,11 @@ function handleProfileEditSubmit(e) {
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Listeners                                          */
 /*---------------------------------------------------------------------------------------------------------*/
-profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  profileEditModal.classList.add("modal__opened");
-});
+const handleEditClick = () => {
+  fillProfileForm();
+  openPopup();
+};
+profileEditButton.addEventListener("click", handleEditClick);
 
 profileEditCloseButton.addEventListener("click", closePopup);
 
