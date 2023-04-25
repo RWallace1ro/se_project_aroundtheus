@@ -67,17 +67,12 @@ function getCardElement(cardData) {
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
-
-  //Delete buttom coding
-
   const deleteButton = cardElement.querySelectorAll(".card__delete-button");
 
   deleteButton.addEventListener("click", () => {
     deleteButton.classList.toggle("card__delete-button");
     cardElement.remove();
   });
-
-  //Delete buttom coding end
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
@@ -96,17 +91,19 @@ function fillProfileForm() {
 }
 //openModal with the previewImageModal
 
-const previewImageModal = document.querySelector("#preview-image-modal");
-const closePreviewImageModalButton = document.querySelector(#close-preview-image-modal);
-
 function closeImagePreviewModal() {
+  const previewImageModal = document.querySelector(
+    "#preview-image-modal-close"
+  );
+  const closePreviewImageModalButton = document.querySelector(
+    "#close-preview-image-modal"
+  );
+
   closeModal(previewImageModal);
 }
 
-//const closePreviewImageModalButton = document.querySelector(#close-preview-image-modal);
-
-closePreviewImageModalButton.addEventListener("click", () => {
-  closeImagePreviewModal.classList.toggle();
+previewImageModalButton.addEventListener("click", () => {
+  closeImagePreviewModal.classList.toggle("previewImageModal");
 });
 
 /*---------------------------------------------------------------------------------------------------------*/
