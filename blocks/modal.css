@@ -11,6 +11,9 @@
   align-items: center;
   justify-content: center;
   display: none;
+  /*display: flex;*/
+  /*opacity: 0;*/
+  transition: ease-in-out, visibility 0.5s, opacity 0.5s, linear;
 }
 
 .model__form {
@@ -96,6 +99,33 @@
 .modal__input:first-of-type {
   margin-top: 54px;
   margin-bottom: 43px;
+}
+
+.modal__image {
+  width: 433px;
+  height: 540px;
+  left: 424px;
+  top: 90px;
+  bottom: 90px;
+  border-radius: 0px;
+  background: #000;
+  padding: 0;
+}
+
+.modal__caption {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: #fff;
+  padding-top: 10px;
+  max-width: 291px;
+  margin: 0;
+}
+
+.modal__container_type_preview {
+  background-color: #000;
+  padding: 0;
 }
 
 @media screen and (max-width: 640px) {
