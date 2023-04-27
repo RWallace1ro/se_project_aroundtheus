@@ -87,7 +87,6 @@ function getCardElement(cardData) {
   });
 
   cardImageEl.addEventListener("click", () => {
-    // previewImageModal.classList.toggle("previewImageModal");
     handleCardClick(cardData);
     openPopup(previewImageModal);
   });
@@ -106,14 +105,6 @@ function fillProfileForm() {
 previewImageModal;
 
 function closeImagePreviewModal() {
-  // const previewImageModal = document.querySelector(
-  // "#preview-image-modal-close"
-  // );
-
-  //const closePreviewImageModalButton = document.querySelector(
-  // "#close-preview-image-modal"
-  // );
-
   closePopup(previewImageModal);
 }
 
