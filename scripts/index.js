@@ -118,7 +118,7 @@ function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closePopup(modal);
+  closePopup(profileEditModal);
 }
 
 function handleCardClick(data) {
@@ -134,11 +134,10 @@ function handleCardClick(data) {
 /*---------------------------------------------------------------------------------------------------------*/
 const handleEditClick = () => {
   fillProfileForm();
-  openPopup(modal);
+  openPopup(profileEditModal);
 };
 
 profileEditButton.addEventListener("click", () => {
-  // <-----
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   openPopup(profileEditModal);
@@ -152,13 +151,20 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 //add new card
 addNewCardButton.addEventListener("click", () => openPopup(addCardModal));
+
 addCardModalEditCloseButton.addEventListener("click", () =>
   closePopup(addCardModal)
 );
 
-// create the event listener for the "submit" event for the add card FORM
+function addNewCardForm() {
+  newCardImageEl.src = cardData.link;
+  newCardImage.alt = cardData.name;
+  newCardTitle.textcontent = cardData.name;
 
-//addCardForm.addEventListener("submit", handleAddCardSubmit);
+  addNewCardModal.value = addNewCard.textContent;
+
+  addCardForm.addEventListener("submit", handleAddCardSubmit);
+}
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
