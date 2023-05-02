@@ -78,7 +78,7 @@ function getCardElement(cardData) {
   const deleteButton = cardElement.querySelector(".card__delete-button");
 
   deleteButton.addEventListener("click", () => {
-    deleteButton.classList.remove("card__delete-button");
+    deleteButton.remove("card__delete-button");
     cardElement.remove();
   });
 
@@ -118,7 +118,10 @@ function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
+  addCardForm.addEventListener("submit", handleAddCardSubmit);
   closePopup(profileEditModal);
+
+  addCardModal.value = addNewCard.textContent;
 }
 
 function handleCardClick(data) {
@@ -143,28 +146,17 @@ profileEditButton.addEventListener("click", () => {
   openPopup(profileEditModal);
 });
 
-profileModalEditCloseButton.addEventListener("click", () =>
-  closePopup(profileEditModal)
-);
+profileModalEditCloseButton.addEventListener("click", () => {
+  closePopup(profileEditModal);
+});
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 //add new card
 addNewCardButton.addEventListener("click", () => openPopup(addCardModal));
-
 addCardModalEditCloseButton.addEventListener("click", () =>
   closePopup(addCardModal)
 );
-
-function addNewCardForm() {
-  newCardImageEl.src = cardData.link;
-  newCardImage.alt = cardData.name;
-  newCardTitle.textcontent = cardData.name;
-
-  addNewCardModal.value = addNewCard.textContent;
-
-  addCardForm.addEventListener("submit", handleAddCardSubmit);
-}
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
