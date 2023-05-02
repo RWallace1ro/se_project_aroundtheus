@@ -114,14 +114,13 @@ previewImageModalCloseButton.addEventListener("click", () => {
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Handlers                                           */
 /*---------------------------------------------------------------------------------------------------------*/
+
 function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   addCardForm.addEventListener("submit", handleAddCardSubmit);
   closePopup(profileEditModal);
-
-  addCardModal.value = addNewCard.textContent;
 }
 
 function handleCardClick(data) {
