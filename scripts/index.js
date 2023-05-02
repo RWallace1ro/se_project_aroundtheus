@@ -135,15 +135,13 @@ function handleCardClick(data) {
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Listeners                                          */
 /*---------------------------------------------------------------------------------------------------------*/
-const handleEditClick = () => {
+const handleEditClick = (modal) => {
   fillProfileForm();
-  openPopup(profileEditModal);
+  openPopup(modal);
 };
 
 profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  openPopup(profileEditModal);
+  handleEditClick(profileEditModal);
 });
 
 profileModalEditCloseButton.addEventListener("click", () => {
