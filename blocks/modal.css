@@ -81,9 +81,14 @@
   transition: 0.5s;
 }
 
-.modal__button:hover {
+/*.modal__button:hover {
   cursor: pointer;
   opacity: 0.8;
+}*/
+
+.modal__button_disable:hover {
+  opacity: 0.2;
+  cursor: default;
 }
 
 .modal__input {
@@ -128,11 +133,6 @@
 
 .modal__container_type_preview {
   background: none;
-}
-
-.modal__button_disable {
-  background: #e5e5e5;
-  opacity: 0.8;
 }
 
 .modal__error {

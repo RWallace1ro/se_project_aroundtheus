@@ -92,7 +92,6 @@ function openPopup(modal) {
 }
 
 function closeModalKeypress(evt) {
-  console.log(evt);
   if (evt.key === "Escape") {
     const openModal = document.querySelector(".modal_opened");
     closePopup(openModal);
@@ -190,6 +189,17 @@ function handleAddCardSubmit(evt) {
   cardListEl.prepend(cardElement);
   closePopup(addCardModal);
   addCardForm.reset();
+}
+
+function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
+  if (hasInvalidInput(inputEls)) {
+    submitButton.classList.add(inactiveButtonClass);
+    submitButton.disabled = true;
+    return;
+  }
+
+  submitButton.classList.remove(inactiveButtonClass);
+  submitButton.disabled = false;
 }
 
 addNewCardButton.addEventListener("click", () => openPopup(addCardModal));

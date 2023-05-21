@@ -27,15 +27,15 @@ function hasInvalidInput(inputList) {
 function disabledButton(formEl, buttonEl, { inactiveButtonClass }) {
   const disableSubmitButton = formEl.querySelector(`#${buttonEl.id}-error`);
   buttonEl.classList.add(inactiveButtonClass);
-  disableSubmitButton.textContent = buttonEl.disabledButton;
-  disableSubmitButton.classList.add(inactiveButtonClass);
+  return disableSubmitButton;
+  //disableSubmitButton.textContent = buttonEl.disabledButton;
 }
 
 function enableButton(formEl, buttonEl, { inactiveButtonClass }) {
   const enableSubmitButton = formEl.querySelector(`#${buttonEl}-error`);
   buttonEl.classList.remove(inactiveButtonClass);
-  enableSubmitButton.textContent = "";
-  enableSubmitButton.classList.remove(inactiveButtonClass);
+  return enableSubmitButton;
+  //enableSubmitButton.classList.remove(inactiveButtonClass);
 }
 
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
