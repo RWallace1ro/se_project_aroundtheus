@@ -191,16 +191,16 @@ function handleAddCardSubmit(evt) {
   addCardForm.reset();
 }
 
-function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
-  if (hasInvalidInput(inputEls)) {
-    submitButton.classList.add(inactiveButtonClass);
-    submitButton.disabled = true;
-    return;
-  }
+//function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
+//  if (hasInvalidInput(inputEls)) {
+//    submitButton.classList.add(inactiveButtonClass);
+//    submitButton.disabled = true;
+//    return;
+//  }
 
-  submitButton.classList.remove(inactiveButtonClass);
-  submitButton.disabled = false;
-}
+//  submitButton.classList.remove(inactiveButtonClass);
+//  submitButton.disabled = false;
+//}
 
 addNewCardButton.addEventListener("click", () => openPopup(addCardModal));
 addCardModalEditCloseButton.addEventListener("click", () =>
