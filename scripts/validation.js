@@ -24,17 +24,17 @@ function hasInvalidInput(inputList) {
   return !inputList.every((inputEl) => inputEl.validity.valid);
 }
 
-function disabledButton(formEl, buttonEl, { inactiveButtonClass }) {
-  const disableSubmitButton = formEl.querySelector(`#${buttonEl.id}-error`);
+function disabledSubmitButton(formEl, buttonEl, { inactiveButtonClass }) {
+  const submitButton = formEl.querySelector(`#${buttonEl.id}-error`);
   buttonEl.classList.add(inactiveButtonClass);
-  return disableSubmitButton;
+  return submitButton;
   //disableSubmitButton.textContent = buttonEl.disabledButton;
 }
 
-function enableButton(formEl, buttonEl, { inactiveButtonClass }) {
-  const enableSubmitButton = formEl.querySelector(`#${buttonEl}-error`);
+function enableSubmitButton(formEl, buttonEl, { inactiveButtonClass }) {
+  const submitButton = formEl.querySelector(`#${buttonEl}-error`);
   buttonEl.classList.remove(inactiveButtonClass);
-  return enableSubmitButton;
+  return submitButton;
   //enableSubmitButton.classList.remove(inactiveButtonClass);
 }
 
@@ -63,7 +63,7 @@ function setEventListeners(formEl, options) {
 }
 
 function enableValidation(options) {
-  const formEls = [...document.querySelectorAll(options.inputSelector)];
+  const formEls = [...document.querySelectorAll(options.formSelector)];
   formEls.forEach((formEl) => {
     formEl.addEventListener("submit", (e) => {
       e.preventDefault();
