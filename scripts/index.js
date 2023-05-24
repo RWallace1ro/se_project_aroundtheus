@@ -188,17 +188,7 @@ function handleAddCardSubmit(evt) {
   cardListEl.prepend(cardElement);
   closePopup(addCardModal);
   addCardForm.reset();
-}
-
-function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
-  if (hasInvalidInput(inputEls)) {
-    submitButton.classList.add(inactiveButtonClass);
-    submitButton.disabled = true;
-    return;
-  }
-
-  submitButton.classList.remove(inactiveButtonClass);
-  submitButton.disabled = false;
+  toggleButtonState(inputEls, submitButton, options);
 }
 
 addNewCardButton.addEventListener("click", () => openPopup(addCardModal));
