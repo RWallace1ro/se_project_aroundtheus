@@ -189,14 +189,7 @@ function handleAddCardSubmit(evt) {
   closePopup(addCardModal);
   addCardForm.reset();
   const cardFormSubmitButton = formEl.querySelector(".modal__button");
-  const cardFormInputs = [...formEl.querySelectorAll(inputSelector)];
-  toggleButtonState(
-    [addCardTitle, addCardLink],
-    cardFormSubmitButton,
-    cardFormInputs,
-    options
-  );
-  //toggleButtonState(inputEls, submitButton, options);
+  toggleButtonState([addCardTitle, addCardLink], cardFormSubmitButton, options);
 }
 
 addNewCardButton.addEventListener("click", () => openPopup(addCardModal));
