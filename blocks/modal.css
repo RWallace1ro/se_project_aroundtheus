@@ -96,11 +96,6 @@
   opacity: 0.8;
 }
 
-/*.modal__button_disable:hover {
-  opacity: 0.2;
-  cursor: default;
-}*/
-
 .modal__input {
   font-family: "Inter", Arial, sans-serif;
   font-style: normal;
@@ -157,7 +152,6 @@
   padding-bottom: 13px;
   max-width: 164px;
   border: none;
-  /*border: #ff0000;*/
   display: flex;
 }
 

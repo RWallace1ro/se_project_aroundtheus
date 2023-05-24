@@ -129,7 +129,6 @@ function fillProfileForm() {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
 }
-//previewImageModal;
 
 function closeImagePreviewModal() {
   closePopup(previewImageModal);
