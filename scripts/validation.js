@@ -34,7 +34,7 @@ const enableSubmitButton = (submitButton, inactiveButtonClass) => {
   submitButton.disabled = false;
 };
 
-function toggleButtonState(inputEls, submitButton) {
+function toggleButtonState(inputEls, submitButton, config) {
   if (hasInvalidInput(inputEls)) {
     disableSubmitButton(submitButton, config.inactiveButtonClass);
   } else {

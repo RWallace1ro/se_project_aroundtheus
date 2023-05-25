@@ -189,7 +189,7 @@ function handleAddCardSubmit(evt) {
   closePopup(addCardModal);
   addCardForm.reset();
   const cardFormSubmitButton = addCardModal.querySelector(".modal__button");
-  toggleButtonState([addCardTitle, addCardLink], cardFormSubmitButton);
+  toggleButtonState([addCardTitle, addCardLink], cardFormSubmitButton, config);
 }
 
 addNewCardButton.addEventListener("click", () => openPopup(addCardModal));
