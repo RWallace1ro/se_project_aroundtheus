@@ -1,10 +1,8 @@
-//export default Card;
-
 const popupImage = document.querySelector(".modal__image");
 const popupCaption = document.querySelector(".modal__caption");
 const previewImageModal = document.querySelector("#preview-image-modal");
-const previewImageModalCloseButton =
-  previewImageModal.querySelector(".modal__close");
+//const previewImageModalCloseButton =
+//  previewImageModal.querySelector(".modal__close");
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
@@ -49,7 +47,7 @@ class Card {
     //.card__image handlePreviewPicture
     this._cardElement
       .querySelector(".card__image")
-      .addEventListener("click", this._hanlePreviewPicture);
+      .addEventListener("click", this._hanlePreviewImage);
   }
 
   //handleDeleteCard
@@ -74,6 +72,8 @@ class Card {
     openPopup(previewImageModal);
   }
 
+  _handleCardImage;
+
   _getTemplate() {
     return document
       .querySelector(this.cardSelector)
@@ -84,14 +84,15 @@ class Card {
   //this is a public method
 
   getView() {
-    this.element = this._getTemplate();
+    this.cardElement = this._getTemplate();
 
-    this._Element.querySelector(
+    this._cardElement.querySelector(
       ".card__image"
     ).style.backgroundImage = `url(${this._link})`;
-    this._Element.querySelector(".card__title").textContent = this._name;
+    this._cardElement.querySelector(".card__title").textContent = this._name;
 
     this._setEventListeners();
+    return this._cardElement;
   }
   //getView() {
   // this.cardElement = document
