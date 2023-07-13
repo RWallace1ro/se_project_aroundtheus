@@ -1,6 +1,7 @@
 const popupImage = document.querySelector(".modal__image");
 const popupCaption = document.querySelector(".modal__caption");
 const previewImageModal = document.querySelector("#preview-image-modal");
+//const modals = document.querySelectorAll(".modal");
 //const previewImageModalCloseButton =
 //  previewImageModal.querySelector(".modal__close");
 
@@ -64,7 +65,7 @@ class Card {
   }
 
   //handlePreviewPicture
-  handlePreviewPicture() {
+  _handlePreviewImageModal() {
     popupCaption.textContent = data.name;
     popupImage.src = data.link;
     popupImage.alt = data.name;
@@ -74,7 +75,7 @@ class Card {
 
   _handleCardImage;
 
-  _getTemplate() {
+  getTemplate() {
     return document
       .querySelector(this.cardSelector)
       .content.querySelector(".card")
@@ -84,7 +85,7 @@ class Card {
   //this is a public method
 
   getView() {
-    this.cardElement = this._getTemplate();
+    this._cardElement = this._getTemplate;
 
     this._cardElement.querySelector(
       ".card__image"
@@ -94,6 +95,7 @@ class Card {
     this._setEventListeners();
     return this._cardElement;
   }
+
   //getView() {
   // this.cardElement = document
   //  .querySelector(this._cardSelector)

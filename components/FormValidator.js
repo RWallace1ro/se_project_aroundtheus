@@ -32,7 +32,7 @@ class FormValidator {
   }
 
   _disableSubmitButton = (submitButton) => {
-    submitButton.classList.add(this - _inactiveButtonClass);
+    submitButton.classList.add(this._inactiveButtonClass);
     submitButton.disabled = true;
   };
 
