@@ -13,12 +13,12 @@ modals.forEach((modal) => {
 
 const modals = document.querySelectorAll(".modal");
 
-function handleProfileEditSubmit(e) {
-  e.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
- closePopup(profileEditModal);
-}
+//function handleProfileEditSubmit(e) {
+//e.preventDefault();
+//profileTitle.textContent = profileTitleInput.value;
+//profileDescription.textContent = profileDescriptionInput.value;
+//closePopup(profileEditModal);
+//}
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
@@ -40,15 +40,17 @@ function handleAddCardSubmit(evt) {
 addCardForm.addEventListener("submit", handleAddCardSubmit);
 
 function handleCardClick(data) {
- popupCaption.textContent = data.name;
- popupImage.src = data.link;
-popupImage.alt = data.name;
+  popupCaption.textContent = data.name;
+  popupImage.src = data.link;
+  popupImage.alt = data.name;
 
-openPopup(previewImageModal);
+  openPopup(previewImageModal);
 }
 
 cardImageEl.addEventListener("click", () => {
   handleCardClick(cardData);
 });
+
+//export default utils;
 
 export default utils { closePopup, openPopup, handle };

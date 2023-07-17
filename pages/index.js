@@ -1,5 +1,6 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+//import utils { closePopup, openPopup, handle } from "../utils/utils.js";
 //import utils from "../utils/utils.js";
 
 const initialCards = [
@@ -58,17 +59,17 @@ const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 
-const addCardForm = addCardModal.querySelector(".modal__form");
+//const addCardForm = addCardModal.querySelector(".modal__form");
 
-const addCardTitle = addCardForm.querySelector("#add-card-input");
-const addCardLink = addCardForm.querySelector("#description-input");
+//const addCardTitle = addCardForm.querySelector("#add-card-input");
+//const addCardLink = addCardForm.querySelector("#description-input");
 
 //preview image modal
 
 //const popupImage = document.querySelector(".modal__image");
 //const popupCaption = document.querySelector(".modal__caption");
 
-//const previewImageModal = document.querySelector("#preview-image-modal");
+const previewImageModal = document.querySelector("#preview-image-modal");
 const previewImageModalCloseButton =
   previewImageModal.querySelector(".modal__close");
 
@@ -174,12 +175,12 @@ previewImageModalCloseButton.addEventListener("click", () => {
 /*                                                Event Handlers                                           */
 /*---------------------------------------------------------------------------------------------------------*/
 
-//function handleProfileEditSubmit(e) {
-// e.preventDefault();
-// profileTitle.textContent = profileTitleInput.value;
-// profileDescription.textContent = profileDescriptionInput.value;
-// closePopup(profileEditModal);
-//}
+function handleProfileEditSubmit(e) {
+  e.preventDefault();
+  profileTitle.textContent = profileTitleInput.value;
+  profileDescription.textContent = profileDescriptionInput.value;
+  closePopup(profileEditModal);
+}
 
 //function handleCardClick(data) {
 // popupCaption.textContent = data.name;
@@ -216,7 +217,7 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 //link: addCardLink.value,
 //};
 
-// const cardElement = getCardElement(cardData);
+//const cardElement = getCardElement(cardData);
 // cardListEl.prepend(cardElement);
 // closePopup(addCardModal);
 // addCardForm.reset();

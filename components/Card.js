@@ -75,17 +75,17 @@ class Card {
 
   _handleCardImage;
 
-  getTemplate() {
+  _getTemplate() {
     return document
-      .querySelector(this.cardSelector)
+      .querySelector(this._cardSelector)
       .content.querySelector(".card")
       .cloneNode(true);
   }
 
   //this is a public method
 
-  getView() {
-    this._cardElement = this._getTemplate;
+  _getView() {
+    this._cardElement = this._getTemplate();
 
     this._cardElement.querySelector(
       ".card__image"
