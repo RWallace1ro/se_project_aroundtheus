@@ -1,26 +1,23 @@
-const popupImage = document.querySelector(".modal__image");
-const popupCaption = document.querySelector(".modal__caption");
-const previewImageModal = document.querySelector("#preview-image-modal");
-//const modals = document.querySelectorAll(".modal");
-//const previewImageModalCloseButton =
-//  previewImageModal.querySelector(".modal__close");
+//const popupImage = document.querySelector(".modal__image");
+//const popupCaption = document.querySelector(".modal__caption");
+//const previewImageModal = document.querySelector("#preview-image-modal");
 
-function closePopup(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keyup", closeModalKeypress);
-}
+//function closePopup(modal) {
+//modal.classList.remove("modal_opened");
+//document.removeEventListener("keyup", closeModalKeypress);
+//}
 
-function openPopup(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keyup", closeModalKeypress);
-}
+//function openPopup(modal) {
+// modal.classList.add("modal_opened");
+//document.addEventListener("keyup", closeModalKeypress);
+//}
 
-function closeModalKeypress(evt) {
-  if (evt.key === "Escape") {
-    const openModal = document.querySelector(".modal_opened");
-    closePopup(openModal);
-  }
-}
+//function closeModalKeypress(evt) {
+// if (evt.key === "Escape") {
+// const openModal = document.querySelector(".modal_opened");
+// closePopup(openModal);
+//}
+//}
 
 class Card {
   constructor({ name, link }, cardSelector) {
@@ -84,7 +81,7 @@ class Card {
 
   //this is a public method
 
-  _getView() {
+  getView() {
     this._cardElement = this._getTemplate();
 
     this._cardElement.querySelector(
@@ -95,18 +92,6 @@ class Card {
     this._setEventListeners();
     return this._cardElement;
   }
-
-  //getView() {
-  // this.cardElement = document
-  //  .querySelector(this._cardSelector)
-  // .content.querySelector(".card")
-  // .cloneNode(true);
-
-  //get the card view
-
-  //set event listners
-  //this._setEventListeners();
-  //return the card
 }
 
 export default Card;
