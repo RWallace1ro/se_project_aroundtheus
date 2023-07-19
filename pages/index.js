@@ -29,10 +29,10 @@ const initialCards = [
   },
 ];
 
-const cardData = {
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};
+//const cardData = {
+// name: "Yosemite Valley",
+// link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+//};
 
 //const card = new Card(cardData, "#card-template");
 //card.getView();
@@ -58,15 +58,15 @@ const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 
-//const addCardForm = addCardModal.querySelector(".modal__form");
+const addCardForm = addCardModal.querySelector(".modal__form");
 
 //const addCardTitle = addCardForm.querySelector("#add-card-input");
 //const addCardLink = addCardForm.querySelector("#description-input");
 
 //preview image modal
 
-const popupImage = document.querySelector(".modal__image");
-const popupCaption = document.querySelector(".modal__caption");
+//const popupImage = document.querySelector(".modal__image");
+//const popupCaption = document.querySelector(".modal__caption");
 
 const previewImageModal = document.querySelector("#preview-image-modal");
 const previewImageModalCloseButton =
@@ -145,17 +145,17 @@ addFormValidator.enableValidation;
 
 //likeButton.addEventListener("click", () => {
 //likeButton.classList.toggle("card__like-button_active");
-// });
+//});
 
-cardImageEl.addEventListener("click", () => {
-  handleCardClick(cardData);
-});
+//cardImageEl.addEventListener("click", () => {
+//handleCardClick(cardData);
+//});
 
 //cardImageEl.src = cardData.link;
 //cardImageEl.alt = cardData.name;
 //cardTitleEl.textContent = cardData.name;
 
-// return cardElement;
+//return cardElement;
 
 function fillProfileForm() {
   profileTitleInput.value = profileTitle.textContent;
@@ -181,13 +181,13 @@ function handleProfileEditSubmit(e) {
   closePopup(profileEditModal);
 }
 
-function handleCardClick(data) {
-  popupCaption.textContent = data.name;
-  popupImage.src = data.link;
-  popupImage.alt = data.name;
+//function handleCardClick(data) {
+//popupCaption.textContent = data.name;
+//popupImage.src = data.link;
+//popupImage.alt = data.name;
 
-  openPopup(previewImageModal);
-}
+// openPopup(previewImageModal);
+//}
 
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Listeners                                          */

@@ -1,24 +1,3 @@
-//const popupImage = document.querySelector(".modal__image");
-//const popupCaption = document.querySelector(".modal__caption");
-//const previewImageModal = document.querySelector("#preview-image-modal");
-
-//function closePopup(modal) {
-//modal.classList.remove("modal_opened");
-//document.removeEventListener("keyup", closeModalKeypress);
-//}
-
-//function openPopup(modal) {
-// modal.classList.add("modal_opened");
-//document.addEventListener("keyup", closeModalKeypress);
-//}
-
-//function closeModalKeypress(evt) {
-// if (evt.key === "Escape") {
-// const openModal = document.querySelector(".modal_opened");
-// closePopup(openModal);
-//}
-//}
-
 class Card {
   constructor({ name, link }, cardSelector) {
     this._name = name;
