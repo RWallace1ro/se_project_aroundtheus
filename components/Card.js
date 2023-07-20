@@ -18,13 +18,15 @@ class Card {
     this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
-        this._handleDeleteButton;
+        this._handleDeleteButton();
       });
 
     //.card__image handlePreviewPicture
     this._cardElement
       .querySelector(".card__image")
-      .addEventListener("click", this._hanlePreviewImage);
+      .addEventListener("click", () => {
+        this._handlePreviewImageModal();
+      });
   }
 
   //handleDeleteCard
@@ -36,15 +38,15 @@ class Card {
   //handleLikeIcon
   _handleLikeButton() {
     this._cardElement
-      .querySelector("card__like-button")
+      .querySelector(".card__like-button")
       .classList.toggle("card__like-button_active");
   }
 
   //handlePreviewPicture
   _handlePreviewImageModal() {
-    popupCaption.textContent = data.name;
-    popupImage.src = data.link;
-    popupImage.alt = data.name;
+    this._popupCaption.textContent = data.name;
+    this._popupImage.src = data.link;
+    this._popupImage.alt = data.name;
 
     openPopup(previewImageModal);
   }

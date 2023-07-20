@@ -30,8 +30,8 @@ const initialCards = [
 ];
 
 //const cardData = {
-// name: "Yosemite Valley",
-// link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+//name: "Yosemite Valley",
+//link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 //};
 
 //const card = new Card(cardData, "#card-template");
@@ -130,8 +130,8 @@ const addFormEls = addCardModal.querySelector(".modal__form");
 const editFormValidator = new FormValidator(validationSettings, editFormEls);
 const addFormValidator = new FormValidator(validationSettings, addFormEls);
 
-editFormValidator.enableValidation;
-addFormValidator.enableValidation;
+//editFormValidator.enableValidation();
+//addFormValidator.enableValidation();
 
 //function getCardElement(cardData) {
 //const cardElement = cardTemplate.cloneNode(true);
