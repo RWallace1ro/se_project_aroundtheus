@@ -43,10 +43,12 @@ class Card {
   }
 
   //handlePreviewPicture
-  _handlePreviewImageModal() {
+  _handlePreviewImageModal({ name, link }, previewImageModal) {
     this._popupCaption.textContent = data.name;
-    this._popupImage.src = data.link;
-    this._popupImage.alt = data.name;
+    //this._popupImage.src = data.link;
+    //this._popupImage.alt = data.name;
+    this._name = name;
+    this._link = link;
 
     openPopup(previewImageModal);
   }
@@ -64,11 +66,12 @@ class Card {
 
   getView() {
     this._cardElement = this._getTemplate();
+    this._cardElement.querySelector(".card__image").src = this._link;
 
-    this._cardElement.querySelector(
-      ".card__image"
-    ).style.backgroundImage = `url(${this._link})`;
-    this._cardElement.querySelector(".card__title").textContent = this._name;
+    //this._cardElement.querySelector(
+    //".card__image"
+    //).style.backgroundImage = `url(${this._link})`;
+    //this._cardElement.querySelector(".card__title").textContent = this._name;
 
     this._setEventListeners();
     return this._cardElement;

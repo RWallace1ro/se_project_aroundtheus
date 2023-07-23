@@ -60,8 +60,8 @@ const profileDescriptionInput = document.querySelector(
 
 const addCardForm = addCardModal.querySelector(".modal__form");
 
-//const addCardTitle = addCardForm.querySelector("#add-card-input");
-//const addCardLink = addCardForm.querySelector("#description-input");
+const addCardTitle = addCardForm.querySelector("#add-card-input");
+const addCardLink = addCardForm.querySelector("#description-input");
 
 //preview image modal
 
