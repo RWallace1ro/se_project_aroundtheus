@@ -130,8 +130,8 @@ const addFormEls = addCardModal.querySelector(".modal__form");
 const editFormValidator = new FormValidator(validationSettings, editFormEls);
 const addFormValidator = new FormValidator(validationSettings, addFormEls);
 
-//editFormValidator.enableValidation();
-//addFormValidator.enableValidation();
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 
 //function getCardElement(cardData) {
 //const cardElement = cardTemplate.cloneNode(true);
