@@ -1,5 +1,5 @@
-//import { previewImageModal } from "../utils/utils.js";
-//import { closePopup, openPopup } from "../utils/utils.js";
+import { previewImageModal } from "../pages/index.js";
+import { closePopup, openPopup } from "../utils/utils.js";
 
 class Card {
   constructor({ name, link }, cardSelector) {
@@ -10,21 +10,18 @@ class Card {
   }
 
   _setEventListeners() {
-    //".card__like-button" handleLikeIcon
     this._cardElement
       .querySelector(".card__like-button")
       .addEventListener("click", () => {
         this._handleLikeButton();
       });
 
-    //.card__delete-button" handleDeleteCard
     this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
         this._handleDeleteButton();
       });
 
-    //.card__image handlePreviewPicture
     this._cardElement
       .querySelector(".card__image")
       .addEventListener("click", () => {
@@ -32,20 +29,17 @@ class Card {
       });
   }
 
-  //handleDeleteCard
   _handleDeleteButton() {
     this._cardElement.remove();
     this._cardElement = null;
   }
 
-  //handleLikeIcon
   _handleLikeButton() {
     this._cardElement
       .querySelector(".card__like-button")
       .classList.toggle("card__like-button_active");
   }
 
-  //handlePreviewPicture
   _handlePreviewImageModal() {
     const image = previewImageModal.querySelector(".modal__image");
     const caption = previewImageModal.querySelector(".modal__caption");

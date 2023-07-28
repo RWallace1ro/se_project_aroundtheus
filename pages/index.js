@@ -29,14 +29,6 @@ const initialCards = [
   },
 ];
 
-//const cardData = {
-//name: "Yosemite Valley",
-//link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-//};
-
-//const card = new Card(cardData, "#card-template");
-//card.getView();
-
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Element                                                  */
 /*---------------------------------------------------------------------------------------------------------*/
@@ -63,54 +55,12 @@ const addCardForm = addCardModal.querySelector(".modal__form");
 const addCardTitle = addCardForm.querySelector("#add-card-input");
 const addCardLink = addCardForm.querySelector("#description-input");
 
-//preview image modal
-
-//const popupImage = document.querySelector(".modal__image");
-//const popupCaption = document.querySelector(".modal__caption");
-
 const previewImageModal = document.querySelector("#preview-image-modal");
 const previewImageModalCloseButton =
   previewImageModal.querySelector(".modal__close");
 
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const cardListEl = document.querySelector(".cards__list");
-//const cardTemplate =
-//document.querySelector("#card-template").content.firstElementChild;
-
-//const modals = document.querySelectorAll(".modal");
-
-/*---------------------------------------------------------------------------------------------------------*/
-/*                                                Functions                                                */
-/*---------------------------------------------------------------------------------------------------------*/
-//function handleModalClose(evt) {
-//if (
-// evt.target.classList.contains("modal") ||
-//evt.target.classList.contains("modal__form-close-button")
-// ) {
-// closePopup(evt.currentTarget);
-//}
-//}
-
-//modals.forEach((modal) => {
-// modal.addEventListener("mousedown", handleModalClose);
-//});
-
-//function closePopup(modal) {
-//modal.classList.remove("modal_opened");
-//document.removeEventListener("keyup", closeModalKeypress);
-//}
-
-//function openPopup(modal) {
-// modal.classList.add("modal_opened");
-// document.addEventListener("keyup", closeModalKeypress);
-//}
-
-//function closeModalKeypress(evt) {
-// if (evt.key === "Escape") {
-//  const openModal = document.querySelector(".modal_opened");
-//  closePopup(openModal);
-// }
-//}
 
 /*----------------------------------------------------------------------------------------------------------*/
 /*                                                 Validation                                                                                       */
@@ -132,30 +82,6 @@ const addFormValidator = new FormValidator(validationSettings, addFormEls);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
-
-//function getCardElement(cardData) {
-//const cardElement = cardTemplate.cloneNode(true);
-//const cardImageEl = cardElement.querySelector(".card__image");
-//const cardTitleEl = cardElement.querySelector(".card__title");
-//const likeButton = cardElement.querySelector(".card__like-button");
-//const deleteButton = cardElement.querySelector(".card__delete-button");
-//deleteButton.addEventListener("click", () => {
-// cardElement.remove();
-// });
-
-//likeButton.addEventListener("click", () => {
-//likeButton.classList.toggle("card__like-button_active");
-//});
-
-//cardImageEl.addEventListener("click", () => {
-//handleCardClick(cardData);
-//});
-
-//cardImageEl.src = cardData.link;
-//cardImageEl.alt = cardData.name;
-//cardTitleEl.textContent = cardData.name;
-
-//return cardElement;
 
 function fillProfileForm() {
   profileTitleInput.value = profileTitle.textContent;
@@ -180,14 +106,6 @@ function handleProfileEditSubmit(e) {
   profileDescription.textContent = profileDescriptionInput.value;
   closePopup(profileEditModal);
 }
-
-//function handleCardClick(data) {
-//popupCaption.textContent = data.name;
-//popupImage.src = data.link;
-//popupImage.alt = data.name;
-
-// openPopup(previewImageModal);
-//}
 
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Listeners                                          */
@@ -230,8 +148,9 @@ addCardModalEditCloseButton.addEventListener("click", () =>
 );
 
 initialCards.forEach((cardData) => {
-  //const cardElement = getCardElement(cardData);
   const card = new Card(cardData, "#card-template");
   const cardElement = card.getView();
   cardListEl.prepend(cardElement);
 });
+
+export { previewImageModal };
