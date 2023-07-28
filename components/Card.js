@@ -1,3 +1,6 @@
+//import { previewImageModal } from "../utils/utils.js";
+//import { closePopup, openPopup } from "../utils/utils.js";
+
 class Card {
   constructor({ name, link }, cardSelector) {
     this._name = name;
@@ -43,12 +46,12 @@ class Card {
   }
 
   //handlePreviewPicture
-  _handlePreviewImageModal({ name, link }, previewImageModal) {
-    this._popupCaption.textContent = data.name;
-    //this._popupImage.src = data.link;
-    //this._popupImage.alt = data.name;
-    this._name = name;
-    this._link = link;
+  _handlePreviewImageModal() {
+    const image = previewImageModal.querySelector(".modal__image");
+    const caption = previewImageModal.querySelector(".modal__caption");
+    caption.textContent = this._name;
+    image.src = this._link;
+    image.alt = this._name;
 
     openPopup(previewImageModal);
   }
@@ -67,10 +70,6 @@ class Card {
   getView() {
     this._cardElement = this._getTemplate();
     this._cardElement.querySelector(".card__image").src = this._link;
-
-    //this._cardElement.querySelector(
-    //".card__image"
-    //).style.backgroundImage = `url(${this._link})`;
     this._cardElement.querySelector(".card__title").textContent = this._name;
 
     this._setEventListeners();

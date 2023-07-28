@@ -12,7 +12,7 @@ class FormValidator {
   _showInputError(inputEl) {
     const errorClassEl = this._form.querySelector(`#${inputEl.id}-error`);
     inputEl.classList.add(this._inputErrorClass);
-    errorClassEl.textContent = inputEl.errorClass;
+    errorClassEl.textContent = inputEl.validationMessage;
     errorClassEl.classList.add(this._errorClass);
   }
 
@@ -23,12 +23,12 @@ class FormValidator {
     errorClassEl.classList.remove(this._errorClass);
   }
 
-  _checkInputValidity(formEl, inputEl) {
-    if (!this._inputEl.validity.valid) {
-      return this._showInputError(formEl, inputEl);
+  _checkInputValidity(inputEl) {
+    if (!inputEl.validity.valid) {
+      this._showInputError(inputEl);
+    } else {
+      this._hideInputError(inputEl);
     }
-
-    this._hideInputError(formEl, inputEl);
   }
 
   _disableSubmitButton = () => {
