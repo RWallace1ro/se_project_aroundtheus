@@ -17,7 +17,7 @@ class FormValidator {
   }
 
   _hideInputError(inputEl) {
-    const errorClassEl = this.form.querySelector(`#${inputEl.id}-error`);
+    const errorClassEl = this._form.querySelector(`#${inputEl.id}-error`);
     inputEl.classList.remove(this._inputErrorClass);
     errorClassEl.textContent = "";
     errorClassEl.classList.remove(this._errorClass);
@@ -31,40 +31,34 @@ class FormValidator {
     this._hideInputError(formEl, inputEl);
   }
 
-  _disableSubmitButton = (submitButton) => {
-    submitButton.classList.add(this._inactiveButtonClass);
-    submitButton.disabled = true;
+  _disableSubmitButton = () => {
+    this._submitButton.classList.add(this._inactiveButtonClass);
+    this._submitButton.disabled = true;
   };
 
-  _enableSubmitButton = (submitButton) => {
-    submitButton.classList.remove(this._inactiveButtonClass);
-    submitButton.disabled = false;
+  _enableSubmitButton = () => {
+    this._submitButton.classList.remove(this._inactiveButtonClass);
+    this._submitButton.disabled = false;
   };
 
   _toggleButtonState() {
     if (this._hasInvalidInput(this._inputEls)) {
-      this._disableSubmitButton(
-        this._submitButtonSelector,
-        this._config.inactiveButtonClass
-      );
+      this._disableSubmitButton();
     } else {
-      this._enableSubmitButton(
-        this._submitButtonSelector,
-        this._config.inactiveButtonClass
-      );
+      this._enableSubmitButton();
     }
   }
 
   _hasInvalidInput() {
-    return !this._inputList.every((inputEl) => inputEl.validity.valid);
+    return !this._inputEls.every((inputEl) => inputEl.validity.valid);
   }
 
   _setEventListeners() {
     this._inputEls = [...this._form.querySelectorAll(this._inputSelector)];
-    this._submitButton = this._form.querySelector(this.submitButtonSelector);
+    this._submitButton = this._form.querySelector(this._submitButtonSelector);
     this._toggleButtonState();
 
-    inputEls.forEach((inputEl) => {
+    this._inputEls.forEach((inputEl) => {
       inputEl.addEventListener("input", (e) => {
         this._checkInputValidity(inputEl);
         this._toggleButtonState();
