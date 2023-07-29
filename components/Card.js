@@ -1,5 +1,5 @@
 import { previewImageModal } from "../pages/index.js";
-import { closePopup, openPopup } from "../utils/utils.js";
+import { openPopup } from "../utils/utils.js";
 
 class Card {
   constructor({ name, link }, cardSelector) {

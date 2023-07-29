@@ -134,12 +134,11 @@ function handleAddCardSubmit(evt) {
     link: addCardLink.value,
   };
 
-  const cardElement = getCardElement(cardData);
+  const cardElement = renderCard(cardData);
   cardListEl.prepend(cardElement);
   closePopup(addCardModal);
   addCardForm.reset();
-  const cardFormSubmitButton = addCardModal.querySelector(".modal__button");
-  toggleButtonState([addCardTitle, addCardLink], cardFormSubmitButton, config);
+  addFormValidator.toggleButtonState();
 }
 
 addNewCardButton.addEventListener("click", () => openPopup(addCardModal));
@@ -148,9 +147,13 @@ addCardModalEditCloseButton.addEventListener("click", () =>
 );
 
 initialCards.forEach((cardData) => {
-  const card = new Card(cardData, "#card-template");
-  const cardElement = card.getView();
+  const cardElement = renderCard(cardData);
   cardListEl.prepend(cardElement);
 });
+
+function renderCard(cardData) {
+  const card = new Card(cardData, "#card-template");
+  return card.getView();
+}
 
 export { previewImageModal };
