@@ -149,7 +149,7 @@
   top: calc(100% + 5px);
   transition: opacity 0.3s ease;
   padding-bottom: 13px;
-  max-width: 164px;
+  /*max-width: 164px;*/
   border: none;
   display: flex;
 }
