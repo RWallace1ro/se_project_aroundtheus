@@ -18,16 +18,16 @@ function closePopup(modal) {
   document.removeEventListener("keyup", closeModalKeypress);
 }
 
-function openPopup(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keyup", closeModalKeypress);
-}
+// function openPopup(modal) {
+//   modal.classList.add("modal_opened");
+//   document.addEventListener("keyup", closeModalKeypress);
+// }
 
-function closeModalKeypress(evt) {
-  if (evt.key === "Escape") {
-    const openModal = document.querySelector(".modal_opened");
-    closePopup(openModal);
-  }
-}
+// function closeModalKeypress(evt) {
+//   if (evt.key === "Escape") {
+//     const openModal = document.querySelector(".modal_opened");
+//     closePopup(openModal);
+//   }
+// }
 
-export { closePopup, openPopup };
+export { closePopup };

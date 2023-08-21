@@ -1,12 +1,12 @@
-import { previewImageModal } from "../pages/index.js";
-import { openPopup } from "../utils/utils.js";
+//import { previewModal } from "../pages/index.js";
+//import { openPopup } from "../utils/utils.js";
 
 class Card {
-  constructor({ name, link }, cardSelector) {
-    this._name = name;
-    this._link = link;
-
+  constructor({ data, handleImageClick }, cardSelector) {
+    // this._name = name;
+    // this._link = link;
     this._cardSelector = cardSelector;
+    this._handleImageClick = handleImageClick;
   }
 
   _setEventListeners() {
@@ -25,7 +25,7 @@ class Card {
     this._cardElement
       .querySelector(".card__image")
       .addEventListener("click", () => {
-        this._handlePreviewImageModal();
+        this._handleImageClick({ link: this._link, text: this._text });
       });
   }
 
@@ -40,17 +40,17 @@ class Card {
       .classList.toggle("card__like-button_active");
   }
 
-  _handlePreviewImageModal() {
-    const image = previewImageModal.querySelector(".modal__image");
-    const caption = previewImageModal.querySelector(".modal__caption");
-    caption.textContent = this._name;
-    image.src = this._link;
-    image.alt = this._name;
+  // _handlePreviewImageModal() {
+  //   const image = previewImageModal.querySelector(".modal__image");
+  //   const caption = previewImageModal.querySelector(".modal__caption");
+  //   caption.textContent = this._name;
+  //   image.src = this._link;
+  //   image.alt = this._name;
 
-    openPopup(previewImageModal);
-  }
+  //   openPopup(previewImageModal);
+  // }
 
-  //_handleCardImage;
+  _handleCardImage;
 
   _getTemplate() {
     return document

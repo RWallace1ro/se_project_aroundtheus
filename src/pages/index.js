@@ -1,9 +1,14 @@
-import Card from "../../components/Card.js";
-import FormValidator from "../../components/FormValidator.js";
-import { closePopup, openPopup } from "../../utils/utils.js";
-import "../pages/index.css";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import { closePopup } from "../utils/utils.js";
+import "./index.css";
+import PopupWithImage from "../scripts/PopupWithImage.js";
+import PopupWithForm from "../scripts/PopupWithForm.js";
 
-const initialCards = [
+//import selectors from "../components/Section.js";
+//import Section from "../components/Section.js";
+
+export const initialCards = [
   {
     name: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
@@ -30,6 +35,11 @@ const initialCards = [
   },
 ];
 
+export const selectors = {
+  cardSection: "cards__list",
+  cardTemplate: ".card-template",
+  previewImageModal: "preview-image-modal",
+};
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Element                                                  */
 /*---------------------------------------------------------------------------------------------------------*/
@@ -54,7 +64,7 @@ const addCardForm = addCardModal.querySelector(".modal__form");
 const addCardTitle = addCardForm.querySelector("#add-card-input");
 const addCardLink = addCardForm.querySelector("#description-input");
 
-const previewImageModal = document.querySelector("#preview-image-modal");
+//const previewImageModal = document.querySelector("#preview-image-modal");
 
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const cardListEl = document.querySelector(".cards__list");
@@ -77,8 +87,8 @@ const editFormValidator = new FormValidator(
 );
 const addFormValidator = new FormValidator(validationSettings, addCardForm);
 
-editFormValidator.enableValidation();
-addFormValidator.enableValidation();
+//editFormValidator.enableValidation();
+//addFormValidator.enableValidation();
 
 function fillProfileForm() {
   profileTitleInput.value = profileTitle.textContent;
@@ -137,5 +147,58 @@ function renderCard(cardData) {
   const card = new Card(cardData, "#card-template");
   return card.getView();
 }
+const CardPreviewModal = new PopupWithImage(selectors.previewModal);
+const CardSection = new Section(
+  {
+    renderer: (data) => {
+      const cardEl = new Card(
+        {
+          data,
+          handleImageClick: (imgData) => {
+            CardPreviewModal.open(imgData);
+          },
+        },
+        selectors.cardTemplate
+      );
 
-export { previewImageModal };
+      CardSection.addItems(cardEl.getView());
+    },
+  },
+  selectors.cardSection
+);
+
+//codes to initialize all instances
+CardSection.renderItems(initialCards);
+CardPreviewModal.setEventListeners();
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
+
+// const addCardModal = new PopupWithForm("#add-card-modal", () => {});
+// addCardModal.open();
+
+// addCardModal.close();
+
+//Remaining codes
+//eventListerners for opening profile and add card modals/popups
+const FormEditModal = new PopupWithForm(selectors.editModal);
+const FormSection = new Section(
+  {
+    renderer: (data) => {
+      const formEl = new Card(
+        {
+          data,
+          handleFormSubmit: (formData) => {
+            FormEditModal.open(formData);
+          },
+        },
+        selectors.cardTemplate
+      );
+
+      FormSection.addItems(formEl.getView());
+    },
+  },
+  selectors.formSection
+);
+
+export { CardPreviewModal };
+export { FormEditModal };
