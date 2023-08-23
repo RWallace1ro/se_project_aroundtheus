@@ -5,9 +5,6 @@ import "./index.css";
 import PopupWithImage from "../scripts/PopupWithImage.js";
 import PopupWithForm from "../scripts/PopupWithForm.js";
 
-//import selectors from "../components/Section.js";
-//import Section from "../components/Section.js";
-
 export const initialCards = [
   {
     name: "Yosemite Valley",
@@ -147,7 +144,7 @@ function renderCard(cardData) {
   const card = new Card(cardData, "#card-template");
   return card.getView();
 }
-const CardPreviewModal = new PopupWithImage(selectors.previewModal);
+const CardPreviewModal = new PopupWithImage(selectors.previewImageModal);
 const CardSection = new Section(
   {
     renderer: (data) => {
