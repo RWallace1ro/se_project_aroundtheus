@@ -1,7 +1,7 @@
 export default class Section {
-  constructor({ renderer, selector }) {
+  constructor({ renderer, selectors }) {
     this._renderer = renderer;
-    this._element = document.querySelector(selector);
+    this._element = document.querySelector(selectors);
   }
 
   //public function
@@ -13,6 +13,6 @@ export default class Section {
   }
   // take the item and render it into this._element
   addItems(element) {
-    this.container.append(element);
+    this._modalContainer.append(element);
   }
 }

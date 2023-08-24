@@ -1,20 +1,20 @@
 //import { Escape } from "../utils/utils.js";
 
 export default class Popup {
-  constructor({ popupSelector }) {
-    this.popupElement = document.querySelector(`${popupSelector}`);
+  constructor(popupSelector) {
+    this._popupElement = document.querySelector(popupSelector);
     this._handleEscClose = this._handleEscClose;
   }
 
   open() {
     //opens popup
-    this.popupElement.classList.add("modal__opened");
+    this._popupElement.classList.add("modal__opened");
     document.addEventListener("keyup", this._handleEscClose);
   }
 
   close() {
     //closes popup
-    this.popupElement.classList.remove("modal__opened");
+    this._popupElement.classList.remove("modal__opened");
     document.removeEventListener("keyup", this._handleEscClose);
   }
 
@@ -28,7 +28,7 @@ export default class Popup {
 
   setEventListeners() {
     // sets event listeners
-    this.popupElement.addEventListener("click", (evt) => {
+    this._popupElement.addEventListener("click", (evt) => {
       if (
         evt.target.classList.contains("modal") ||
         evt.target.classList.contains("modal_close")

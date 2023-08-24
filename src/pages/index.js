@@ -4,6 +4,7 @@ import { closePopup } from "../utils/utils.js";
 import "./index.css";
 import PopupWithImage from "../scripts/PopupWithImage.js";
 import PopupWithForm from "../scripts/PopupWithForm.js";
+import Section from "../scripts/Section.js";
 
 export const initialCards = [
   {
@@ -33,9 +34,9 @@ export const initialCards = [
 ];
 
 export const selectors = {
-  cardSection: "cards__list",
-  cardTemplate: ".card-template",
-  previewImageModal: "preview-image-modal",
+  cardSection: ".cards__list",
+  cardTemplate: "#card-template",
+  previewImageModal: "#preview-image-modal",
 };
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Element                                                  */
@@ -144,29 +145,29 @@ function renderCard(cardData) {
   const card = new Card(cardData, "#card-template");
   return card.getView();
 }
-const CardPreviewModal = new PopupWithImage(selectors.previewImageModal);
-const CardSection = new Section(
+const cardPreviewImageModal = new PopupWithImage(selectors.previewImageModal);
+const cardSection = new Section(
   {
     renderer: (data) => {
       const cardEl = new Card(
         {
           data,
           handleImageClick: (imgData) => {
-            CardPreviewModal.open(imgData);
+            cardPreviewImageModal.open(imgData);
           },
         },
         selectors.cardTemplate
       );
 
-      CardSection.addItems(cardEl.getView());
+      cardSection.addItems(cardEl.getView());
     },
   },
   selectors.cardSection
 );
 
 //codes to initialize all instances
-CardSection.renderItems(initialCards);
-CardPreviewModal.setEventListeners();
+cardSection.renderItems(item);
+cardPreviewImageModal.setEventListeners();
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
@@ -197,5 +198,5 @@ const FormSection = new Section(
   selectors.formSection
 );
 
-export { CardPreviewModal };
+export { cardPreviewImageModal };
 export { FormEditModal };

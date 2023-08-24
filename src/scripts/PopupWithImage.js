@@ -1,4 +1,4 @@
-import { CardPreviewModal } from "../pages/index.js";
+//import { CardPreviewModal } from "../pages/index.js";
 import Popup from "./Popup.js";
 
 export default class PopupWithImage extends Popup {
@@ -13,6 +13,6 @@ export default class PopupWithImage extends Popup {
     this._image.src = data.link;
     this._image.alt = data.name;
     super.open();
-    return CardPreviewModal;
+    //return CardPreviewModal;
   }
 }

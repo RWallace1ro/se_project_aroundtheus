@@ -2,7 +2,7 @@
 //import { openPopup } from "../utils/utils.js";
 
 class Card {
-  constructor({ data, handleImageClick }, cardSelector) {
+  constructor({ handleImageClick }, cardSelector) {
     // this._name = name;
     // this._link = link;
     this._cardSelector = cardSelector;
