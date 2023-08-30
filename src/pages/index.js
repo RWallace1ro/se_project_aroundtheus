@@ -145,7 +145,13 @@ function renderCard(cardData) {
   const card = new Card(cardData, "#card-template");
   return card.getView();
 }
-const cardPreviewImageModal = new PopupWithImage(selectors.previewImageModal);
+
+// const renderCard = (cardData) => {
+//   const card = new Card(cardData, handleImageClick, cardSelector);
+//   return card.getView{};
+// };
+
+const previewImageModal = new PopupWithImage(selectors.previewImageModal);
 const cardSection = new Section(
   {
     renderer: (data) => {
@@ -153,7 +159,7 @@ const cardSection = new Section(
         {
           data,
           handleImageClick: (imgData) => {
-            cardPreviewImageModal.open(imgData);
+            previewImageModal.open(imgData);
           },
         },
         selectors.cardTemplate
@@ -164,10 +170,9 @@ const cardSection = new Section(
   },
   selectors.cardSection
 );
-
 //codes to initialize all instances
 cardSection.renderItems(item);
-cardPreviewImageModal.setEventListeners();
+previewImageModal.setEventListeners();
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
@@ -178,25 +183,25 @@ addFormValidator.enableValidation();
 
 //Remaining codes
 //eventListerners for opening profile and add card modals/popups
-const FormEditModal = new PopupWithForm(selectors.editModal);
-const FormSection = new Section(
+const formEditModal = new PopupWithForm(selectors.formEditModal);
+const formSection = new Section(
   {
     renderer: (data) => {
       const formEl = new Card(
         {
           data,
           handleFormSubmit: (formData) => {
-            FormEditModal.open(formData);
+            formEditModal.open(formData);
           },
         },
         selectors.cardTemplate
       );
 
-      FormSection.addItems(formEl.getView());
+      formSection.addItems(formEl.getView());
     },
   },
   selectors.formSection
 );
 
-export { cardPreviewImageModal };
-export { FormEditModal };
+export { previewImageModal };
+export { formEditModal };
