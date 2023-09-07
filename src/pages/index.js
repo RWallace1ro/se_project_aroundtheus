@@ -37,6 +37,7 @@ export const selectors = {
   cardSection: ".cards__list",
   cardTemplate: "#card-template",
   previewImageModal: "#preview-image-modal",
+  profileEditModal: "#profile-edit-modal",
 };
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Element                                                  */
@@ -151,28 +152,29 @@ function renderCard(cardData) {
 //   return card.getView{};
 // };
 
-const previewImageModal = new PopupWithImage(selectors.previewImageModal);
-const cardSection = new Section(
+const cardPreviewImageModal = new PopupWithImage(selectors.previewImageModal);
+const CardSection = new Section(
   {
-    renderer: (data) => {
+    items: initialCards,
+    renderer: (cardData) => {
       const cardEl = new Card(
         {
-          data,
+          cardData,
           handleImageClick: (imgData) => {
-            previewImageModal.open(imgData);
+            cardPreviewImageModal.open(imgData);
           },
         },
         selectors.cardTemplate
       );
 
-      cardSection.addItems(cardEl.getView());
+      CardSection.addItem(cardEl.getView());
     },
   },
   selectors.cardSection
 );
 //codes to initialize all instances
-cardSection.renderItems(item);
-previewImageModal.setEventListeners();
+CardSection.renderItems();
+cardPreviewImageModal.setEventListeners();
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
@@ -183,25 +185,26 @@ addFormValidator.enableValidation();
 
 //Remaining codes
 //eventListerners for opening profile and add card modals/popups
-const formEditModal = new PopupWithForm(selectors.formEditModal);
+const formProfileEditModal = new PopupWithForm(selectors.profileEditModal);
 const formSection = new Section(
   {
-    renderer: (data) => {
+    items: initialCards,
+    renderer: (cardData) => {
       const formEl = new Card(
         {
-          data,
+          cardData,
           handleFormSubmit: (formData) => {
-            formEditModal.open(formData);
+            formProfileEditModal.open(formData);
           },
         },
         selectors.cardTemplate
       );
 
-      formSection.addItems(formEl.getView());
+      formSection.addItem(formEl.getView());
     },
   },
   selectors.formSection
 );
 
-export { previewImageModal };
-export { formEditModal };
+export { cardPreviewImageModal };
+export { formProfileEditModal };

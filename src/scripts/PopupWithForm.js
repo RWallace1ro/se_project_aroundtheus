@@ -10,7 +10,7 @@ export default class PopupWithForm extends Popup {
   }
 
   _getInputValues() {
-    const inputList = (this._popup.querySelector(
+    const inputList = (this._popupForm.querySelector(
       "#profile-title-input"
     ).profileDescriptionInput = document.querySelector(
       "#profile-description-input"

@@ -1,10 +1,9 @@
-//import { previewModal } from "../pages/index.js";
-//import { openPopup } from "../utils/utils.js";
+// import { openPopup } from "../utils/utils.js";
 
 class Card {
-  constructor({ handleImageClick }, cardSelector) {
-    // this._name = name;
-    // this._link = link;
+  constructor({ name, link }, cardSelector, handleImageClick) {
+    this._name = name;
+    this._link = link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
   }
@@ -40,15 +39,15 @@ class Card {
       .classList.toggle("card__like-button_active");
   }
 
-  // _handlePreviewImageModal() {
-  //   const image = previewImageModal.querySelector(".modal__image");
-  //   const caption = previewImageModal.querySelector(".modal__caption");
-  //   caption.textContent = this._name;
-  //   image.src = this._link;
-  //   image.alt = this._name;
+  _handlePreviewImageModal() {
+    // const image = previewImageModal.querySelector(".modal__image");
+    // const caption = previewImageModal.querySelector(".modal__caption");
+    caption.textContent = this._name;
+    image.src = this._link;
+    image.alt = this._name;
 
-  //   openPopup(previewImageModal);
-  // }
+    openPopup(previewImageModal);
+  }
 
   _handleCardImage;
 

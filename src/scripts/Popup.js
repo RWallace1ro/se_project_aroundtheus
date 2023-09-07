@@ -1,8 +1,6 @@
-//import { Escape } from "../utils/utils.js";
-
 export default class Popup {
-  constructor(popupSelector) {
-    this._popupElement = document.querySelector(popupSelector);
+  constructor(_popupSelectors) {
+    this._popupElement = document.querySelector("#preview-imag-modal");
     this._handleEscClose = this._handleEscClose;
   }
 
