@@ -1,10 +1,8 @@
 import Popup from "./Popup.js";
-//import FormValidator from "../components/FormValidator.js";
-//import UserInfo from "./UserInfor.js";
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
-    super({ popupSelector });
+    super(popupSelector);
     this._popupForm = this._popupElement.querySelector(".modal__form");
     this._handleFormSubmit = handleFormSubmit;
   }
@@ -24,7 +22,7 @@ export default class PopupWithForm extends Popup {
 
   open() {
     super.open();
-    this.buttom.textContent = "submit";
+    //this.buttom.textContent = "submit";
   }
 
   setEventListeners() {

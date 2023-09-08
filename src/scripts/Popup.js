@@ -1,18 +1,18 @@
 export default class Popup {
-  constructor(_popupSelectors) {
-    this._popupElement = document.querySelector("#preview-imag-modal");
+  constructor(popupSelector) {
+    this._popupElement = document.querySelector(popupSelector);
     this._handleEscClose = this._handleEscClose;
   }
 
   open() {
     //opens popup
-    this._popupElement.classList.add("modal__opened");
+    this._popupElement.classList.add("modal_opened");
     document.addEventListener("keyup", this._handleEscClose);
   }
 
   close() {
     //closes popup
-    this._popupElement.classList.remove("modal__opened");
+    this._popupElement.classList.remove("modal_opened");
     document.removeEventListener("keyup", this._handleEscClose);
   }
 

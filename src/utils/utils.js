@@ -3,7 +3,7 @@ const modals = document.querySelectorAll(".modal");
 function handleModalClose(evt) {
   if (
     evt.target.classList.contains("modal") ||
-    evt.target.classList.contains("modal__close")
+    evt.target.classList.contains("modal_close")
   ) {
     closePopup(evt.currentTarget);
   }

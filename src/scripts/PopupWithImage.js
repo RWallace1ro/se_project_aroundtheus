@@ -1,9 +1,8 @@
 import Popup from "./Popup.js";
-//import Card from "../components/Card.js";
 
 export default class PopupWithImage extends Popup {
-  constructor(popupSelectors) {
-    super(popupSelectors);
+  constructor(popupSelector) {
+    super(popupSelector);
 
     this._image = document.querySelector(".modal__image");
     this._caption = document.querySelector(".modal__caption");

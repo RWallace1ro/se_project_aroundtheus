@@ -1,6 +1,6 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import { closePopup } from "../utils/utils.js";
+import { close } from "../utils/utils.js";
 import "./index.css";
 import PopupWithImage from "../scripts/PopupWithImage.js";
 import PopupWithForm from "../scripts/PopupWithForm.js";
@@ -102,15 +102,17 @@ function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closePopup(profileEditModal);
+  //closePopup(profileEditModal);
+  formProfileEditModal.close();
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Listeners                                          */
 /*---------------------------------------------------------------------------------------------------------*/
-const handleEditClick = (modal) => {
+const handleEditClick = () => {
   fillProfileForm();
-  openPopup(modal);
+  //openPopup(modal);
+  formProfileEditModal.open();
 };
 
 profileEditButton.addEventListener("click", () => {
@@ -130,12 +132,16 @@ function handleAddCardSubmit(evt) {
 
   const cardElement = renderCard(cardData);
   cardListEl.prepend(cardElement);
-  closePopup(addCardModal);
+  //closePopup(addCardModal);
+  formProfileEditModal.close();
   addCardForm.reset();
   addFormValidator.toggleButtonState();
 }
 
-addNewCardButton.addEventListener("click", () => openPopup(addCardModal));
+addNewCardButton.addEventListener("click", () =>
+  //openPopup(addCardModal));
+  formProfileEditModal.open()
+);
 
 initialCards.forEach((cardData) => {
   const cardElement = renderCard(cardData);
@@ -153,13 +159,13 @@ function renderCard(cardData) {
 // };
 
 const cardPreviewImageModal = new PopupWithImage(selectors.previewImageModal);
-const CardSection = new Section(
+const cardSection = new Section(
   {
     items: initialCards,
-    renderer: (cardData) => {
+    renderer: (data) => {
       const cardEl = new Card(
         {
-          cardData,
+          data,
           handleImageClick: (imgData) => {
             cardPreviewImageModal.open(imgData);
           },
@@ -167,13 +173,13 @@ const CardSection = new Section(
         selectors.cardTemplate
       );
 
-      CardSection.addItem(cardEl.getView());
+      cardSection.addItem(cardEl.getView());
     },
   },
   selectors.cardSection
 );
 //codes to initialize all instances
-CardSection.renderItems();
+cardSection.renderItems();
 cardPreviewImageModal.setEventListeners();
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
@@ -189,10 +195,10 @@ const formProfileEditModal = new PopupWithForm(selectors.profileEditModal);
 const formSection = new Section(
   {
     items: initialCards,
-    renderer: (cardData) => {
+    renderer: (data) => {
       const formEl = new Card(
         {
-          cardData,
+          data,
           handleFormSubmit: (formData) => {
             formProfileEditModal.open(formData);
           },
