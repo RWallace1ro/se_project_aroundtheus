@@ -1,6 +1,6 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import { close } from "../utils/utils.js";
+import { closePopup } from "../utils/utils.js";
 import "./index.css";
 import PopupWithImage from "../scripts/PopupWithImage.js";
 import PopupWithForm from "../scripts/PopupWithForm.js";
@@ -86,9 +86,6 @@ const editFormValidator = new FormValidator(
 );
 const addFormValidator = new FormValidator(validationSettings, addCardForm);
 
-//editFormValidator.enableValidation();
-//addFormValidator.enableValidation();
-
 function fillProfileForm() {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
@@ -99,7 +96,7 @@ function fillProfileForm() {
 /*---------------------------------------------------------------------------------------------------------*/
 
 function handleProfileEditSubmit(e) {
-  e.preventDefault();
+  console.log(e);
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   //closePopup(profileEditModal);
@@ -119,12 +116,13 @@ profileEditButton.addEventListener("click", () => {
   handleEditClick(profileEditModal);
 });
 
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+// profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
-addCardForm.addEventListener("submit", handleAddCardSubmit);
+//addCardForm.addEventListener("submit", handleAddCardSubmit);
 
 function handleAddCardSubmit(evt) {
-  evt.preventDefault();
+  console.log(evt);
+  //evt.preventDefault();
   const cardData = {
     name: addCardTitle.value,
     link: addCardLink.value,
@@ -133,14 +131,13 @@ function handleAddCardSubmit(evt) {
   const cardElement = renderCard(cardData);
   cardListEl.prepend(cardElement);
   //closePopup(addCardModal);
-  formProfileEditModal.close();
+  addCardModal.close();
   addCardForm.reset();
   addFormValidator.toggleButtonState();
 }
-
 addNewCardButton.addEventListener("click", () =>
   //openPopup(addCardModal));
-  formProfileEditModal.open()
+  addCardPopup.open()
 );
 
 initialCards.forEach((cardData) => {
@@ -158,7 +155,10 @@ function renderCard(cardData) {
 //   return card.getView{};
 // };
 
-const cardPreviewImageModal = new PopupWithImage(selectors.previewImageModal);
+const cardPreviewImageModal = new PopupWithImage(
+  selectors.previewImageModal
+  //handleAddCardSubmit
+);
 const cardSection = new Section(
   {
     items: initialCards,
@@ -184,14 +184,18 @@ cardPreviewImageModal.setEventListeners();
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-// const addCardModal = new PopupWithForm("#add-card-modal", () => {});
-// addCardModal.open();
+const addCardPopup = new PopupWithForm("#add-card-modal", () => {});
+//addCardPopup.open();
 
-// addCardModal.close();
+//addCardModal.close();
 
 //Remaining codes
 //eventListerners for opening profile and add card modals/popups
-const formProfileEditModal = new PopupWithForm(selectors.profileEditModal);
+const formProfileEditModal = new PopupWithForm(
+  selectors.profileEditModal,
+  handleProfileEditSubmit
+);
+formProfileEditModal.setEventListeners();
 const formSection = new Section(
   {
     items: initialCards,

@@ -8,14 +8,10 @@ export default class PopupWithForm extends Popup {
   }
 
   _getInputValues() {
-    const inputList = (this._popupForm.querySelector(
-      "#profile-title-input"
-    ).profileDescriptionInput = document.querySelector(
-      "#profile-description-input"
-    ));
+    const inputList = this._popupForm.querySelectorAll(".modal__input");
     const data = {};
     inputList.forEach((input) => {
-      data[(input.title, input.descriptiom)];
+      data[input.name] = input.value;
     });
     return data;
   }
@@ -26,7 +22,8 @@ export default class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
-    super.setEventListeners("submit", (evt) => {
+    super.setEventListeners();
+    this._popupForm.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
     });

@@ -23,11 +23,11 @@ function closePopup(modal) {
 //   document.addEventListener("keyup", closeModalKeypress);
 // }
 
-// function closeModalKeypress(evt) {
-//   if (evt.key === "Escape") {
-//     const openModal = document.querySelector(".modal_opened");
-//     closePopup(openModal);
-//   }
-// }
+function closeModalKeypress(evt) {
+  if (evt.key === "Escape") {
+    const openModal = document.querySelector(".modal_opened");
+    closePopup(openModal);
+  }
+}
 
 export { closePopup };
