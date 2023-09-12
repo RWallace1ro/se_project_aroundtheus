@@ -39,8 +39,6 @@ class Card {
   }
 
   _handlePreviewImageModal() {
-    // const image = previewImageModal.querySelector(".modal__image");
-    // const caption = previewImageModal.querySelector(".modal__caption");
     caption.textContent = this._name;
     image.src = this._link;
     image.alt = this._name;
@@ -56,8 +54,6 @@ class Card {
       .content.querySelector(".card")
       .cloneNode(true);
   }
-
-  //this is a public method
 
   getView() {
     this._cardElement = this._getTemplate();

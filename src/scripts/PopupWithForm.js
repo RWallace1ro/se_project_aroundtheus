@@ -28,8 +28,7 @@ export default class PopupWithForm extends Popup {
       this._handleFormSubmit(this._getInputValues());
     });
   }
-  //named this method in child class close
-  //there is a method in the parent class close
+
   close() {
     this._popupForm.reset();
     super.close();

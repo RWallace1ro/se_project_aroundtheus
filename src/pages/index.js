@@ -5,7 +5,7 @@ import "./index.css";
 import PopupWithImage from "../scripts/PopupWithImage.js";
 import PopupWithForm from "../scripts/PopupWithForm.js";
 import Section from "../scripts/Section.js";
-import UserInfo from "../scripts/UserInfor.js";
+import UserInfo from "../scripts/UserInfo.js";
 
 export const initialCards = [
   {
@@ -40,6 +40,7 @@ export const selectors = {
   previewImageModal: "#preview-image-modal",
   previewImage: ".modal__image",
   previewImageCaption: ".modal__caption",
+  profileEditButton: "#profile-edit-buttom",
   profileEditModal: "#profile-edit-modal",
   userInfoProfileTitle: "#profile-title-input",
   userInfoProfileDescription: "#profile-description-input",
@@ -93,31 +94,33 @@ const editFormValidator = new FormValidator(
 const addFormValidator = new FormValidator(validationSettings, addCardForm);
 
 function fillProfileForm() {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+  const userData = userInfo.setUserInfo();
+  profileTitleInput.textContent = userData.title;
+  profileDescriptionInput.textContent = userData.description;
+  // profileTitleInput.value = profileTitle.textContent;
+  // profileDescriptionInput.value = profileDescription.textContent;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Handlers                                           */
 /*---------------------------------------------------------------------------------------------------------*/
+const userInfo = new UserInfo(".profile__title", ".profile__description");
 
-// function handleProfileEditSubmit(e) {
-//   console.log(e);
-//   profileTitle.textContent = profileTitleInput.value;
-//   profileDescription.textContent = profileDescriptionInput.value;
-//   //closePopup(profileEditModal);
-//   formProfileEditModal.close();
-// }
+function handleProfileEditSubmit() {
+  const userData = userInfo.getUserInfo();
 
-//function handlePreviewImageModal(e) {
-//
+  profileTitle.textContent = userData.title;
+  profileDescription.textContent = userData.description;
+
+  formProfileEditModal.close();
+}
+
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Listeners                                          */
 /*---------------------------------------------------------------------------------------------------------*/
 const handleEditClick = () => {
   fillProfileForm();
-  //openPopup(modal);
-  formProfileEditModal.open();
+  profileEditModal.open();
 };
 
 profileEditButton.addEventListener("click", () => {
@@ -146,24 +149,13 @@ addNewCardButton.addEventListener("click", () =>
   addCardPopup.open()
 );
 
-// initialCards.forEach((cardData) => {
-//   const cardElement = renderCard(cardData);
-//   cardListEl.prepend(cardElement);
-// });
-
 function renderCard(cardData) {
-  //const card = new Card(cardData, "#card-template");
   const card = new Card(cardData, selectors.cardTemplate, (imgData) => {
     cardPreviewImageModal.open(imgData);
-    // const handleImageClick
   });
 
   return card.getView();
 }
-// const renderCard = (cardData) => {
-//   const card = new Card(cardData, handleImageClick, cardSelector);
-//   return card.getView{};
-// };
 
 const cardPreviewImageModal = new PopupWithImage(selectors);
 const cardSection = new Section(
@@ -189,13 +181,11 @@ const addCardPopup = new PopupWithForm("#add-card-modal", handleAddCardSubmit);
 
 addCardPopup.setEventListeners();
 
-//addCardModal.close();
-
 //Remaining codes
 //eventListerners for opening profile and add card modals/popups
 const formProfileEditModal = new PopupWithForm(
-  selectors.profileEditModal
-  //handleProfileEditSubmit
+  selectors.profileEditModal,
+  handleProfileEditSubmit
 );
 formProfileEditModal.setEventListeners();
 const formSection = new Section(
@@ -211,18 +201,6 @@ const formSection = new Section(
   },
   selectors.formSection
 );
-
-const handleProfileEditSubmit = new UserInfo(profileTitle, profileDescription);
-this.userInfo = profileTitle.querySelector("#profile-title-input");
-this.userInfo = profileDescription.querySelector("#profile-description-input");
-formProfileEditModal.close();
-handleProfileEditSubmit();
-
-//  const userInfo = new UserInfo(
-//   document.
-
-const userInfo = userInfo.getUserInfo();
-//const userInfo = UserInfo.setUserInfo();
 
 export { cardPreviewImageModal };
 export { formProfileEditModal };
