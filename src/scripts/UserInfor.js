@@ -1,6 +1,8 @@
+import Popup from "./Popup";
+
 export default class UserInfo extends Popup {
   constructor(titleElement, descriptionElement) {
-    super({ titleElement, descriptionElement });
+    super(titleElement, descriptionElement);
     this._titleElement = this._titleElement.querySelector(".profile__title");
     this._descriptionElement = this._descriptionElement.querySelector(
       ".profile__descriptiom"

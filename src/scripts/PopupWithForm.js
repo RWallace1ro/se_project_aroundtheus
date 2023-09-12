@@ -1,5 +1,5 @@
 import Popup from "./Popup.js";
-
+ImageBitmapRenderingContext;
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
