@@ -1,11 +1,11 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import { closePopup } from "../utils/utils.js";
 import "./index.css";
-import PopupWithImage from "../scripts/PopupWithImage.js";
-import PopupWithForm from "../scripts/PopupWithForm.js";
-import Section from "../scripts/Section.js";
-import UserInfo from "../scripts/UserInfo.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+//import Popup from "./Popup.js";
 
 export const initialCards = [
   {
@@ -104,6 +104,12 @@ function handleProfileEditSubmit(formData) {
   formProfileEditModal.close();
 }
 
+// function handleEscClose(e) {
+//   if (e.key === "Escape") {
+//     document.popupElement("modal-close");
+//     Popup.close();
+//   }
+// }
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Listeners                                          */
 /*---------------------------------------------------------------------------------------------------------*/
@@ -124,7 +130,8 @@ function handleAddCardSubmit({ title, description }) {
 
   const cardElement = renderCard(cardData);
   cardListEl.prepend(cardElement);
-  closePopup(addCardModal);
+  //closePopup(addCardModal);
+  addCardModal.close();
   addCardForm.reset();
   addFormValidator.toggleButtonState();
 }
