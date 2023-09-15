@@ -14,19 +14,16 @@ export default class Popup {
     document.removeEventListener("keyup", this._handleEscClose);
   }
 
-  _handleEscClose(evt) {
+  _handleEscClose = (evt) => {
     evt.preventDefault();
     if (evt.key === "Escape") {
       this.close();
     }
-  }
+  };
 
   setEventListeners() {
     this._popupElement.addEventListener("click", (evt) => {
-      if (
-        evt.target.classList.contains("modal") ||
-        evt.target.classList.contains("modal_close")
-      ) {
+      if (evt.target.classList.value === "modal__close") {
         this.close();
       }
     });

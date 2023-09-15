@@ -5,7 +5,6 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-//import Popup from "./Popup.js";
 
 export const initialCards = [
   {
@@ -91,25 +90,16 @@ function fillProfileForm() {
   profileTitleInput.value = userData.title;
   profileDescriptionInput.value = userData.description;
 }
-
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Handlers                                           */
 /*---------------------------------------------------------------------------------------------------------*/
 const userInfo = new UserInfo(".profile__title", ".profile__description");
 
 function handleProfileEditSubmit(formData) {
-  // console.log(formData);
   userInfo.setUserInfo(formData.title, formData.description);
-
   formProfileEditModal.close();
 }
 
-// function handleEscClose(e) {
-//   if (e.key === "Escape") {
-//     document.popupElement("modal-close");
-//     Popup.close();
-//   }
-// }
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Listeners                                          */
 /*---------------------------------------------------------------------------------------------------------*/
@@ -130,7 +120,6 @@ function handleAddCardSubmit({ title, description }) {
 
   const cardElement = renderCard(cardData);
   cardListEl.prepend(cardElement);
-  //closePopup(addCardModal);
   addCardModal.close();
   addCardForm.reset();
   addFormValidator.toggleButtonState();
@@ -169,7 +158,6 @@ const addCardPopup = new PopupWithForm("#add-card-modal", handleAddCardSubmit);
 
 addCardPopup.setEventListeners();
 
-//Remaining codes
 //eventListerners for opening profile and add card modals/popups
 const formProfileEditModal = new PopupWithForm(
   selectors.profileEditModal,
