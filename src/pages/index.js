@@ -120,7 +120,8 @@ function handleAddCardSubmit({ title, description }) {
 
   const cardElement = renderCard(cardData);
   cardListEl.prepend(cardElement);
-  addCardModal.close();
+  closePopup(addCardModal);
+  //addCardModal.close();
   addCardForm.reset();
   addFormValidator.toggleButtonState();
 }
