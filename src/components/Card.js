@@ -19,12 +19,11 @@ class Card {
         this._handleDeleteButton();
       });
 
-    this._cardElement
-      .querySelector(".card__image")
-      .addEventListener("click", () => {
-        this._handleImageClick({ link: this._link, name: this._name });
-        this._handleImageClick;
-      });
+    this._cardElement.querySelector(".card__image");
+    this._cardImage.addEventListener("click", () => {
+      this._handleImageClick({ link: this._link, name: this._name });
+      //this._handleImageClick;
+    });
   }
 
   _handleDeleteButton() {
@@ -38,15 +37,15 @@ class Card {
       .classList.toggle("card__like-button_active");
   }
 
-  _handlePreviewImageModal() {
-    caption.textContent = this._name;
-    image.src = this._link;
-    image.alt = this._name;
+  // _handlePreviewImageModal() {
+  //   caption.textContent = this._name;
+  //   image.src = this._link;
+  //   image.alt = this._name;
 
-    openPopup(previewImageModal);
-  }
+  //   openPopup(previewImageModal);
+  // }
 
-  _handleCardImage;
+  // _handleCardImage;
 
   _getTemplate() {
     return document
