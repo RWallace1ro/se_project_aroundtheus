@@ -27,7 +27,6 @@ const profileDescriptionInput = document.querySelector(
 const addCardForm = addCardModal.querySelector(".modal__form");
 
 const profileEditForm = profileEditModal.querySelector(".modal__form");
-const cardListEl = document.querySelector(".cards__list");
 
 /*----------------------------------------------------------------------------------------------------------*/
 /*                                                 Validation                                                                                       */
@@ -71,8 +70,6 @@ const handleEditClick = () => {
 };
 
 profileEditButton.addEventListener("click", handleEditClick);
-// profileEditButton.addEventListener("click", () => {
-//   handleEditClick(profileEditModal);
 
 function handleAddCardSubmit({ title, description }) {
   const cardData = {
@@ -81,10 +78,7 @@ function handleAddCardSubmit({ title, description }) {
   };
 
   const card = renderCard(cardData);
-  cardSection.addCard(card);
-  //const cardElement = renderCard(cardData);
-  // cardListEl.prepend(cardElement);
-  cardListEl;
+  cardSection.addItem(card);
   addCardPopup.close();
 }
 
@@ -131,19 +125,6 @@ const formProfileEditModal = new PopupWithForm(
   handleProfileEditSubmit
 );
 formProfileEditModal.setEventListeners();
-// const formSection = new Section(
-//   {
-//     items: initialCards,
-//     renderer: (data) => {
-//       const formEl = new Card(data, selectors.cardTemplate, (formData) => {
-//         formProfileEditModal.open(formData);
-//       });
-
-//       formSection.addItem(formEl.getView());
-//     },
-//   },
-//   selectors.formSection
-// );
 
 export { cardPreviewImageModal };
 export { formProfileEditModal };

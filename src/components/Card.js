@@ -22,7 +22,6 @@ class Card {
     this._cardElement.querySelector(".card__image");
     this._cardImage.addEventListener("click", () => {
       this._handleImageClick({ link: this._link, name: this._name });
-      //this._handleImageClick;
     });
   }
 
@@ -36,16 +35,6 @@ class Card {
       .querySelector(".card__like-button")
       .classList.toggle("card__like-button_active");
   }
-
-  // _handlePreviewImageModal() {
-  //   caption.textContent = this._name;
-  //   image.src = this._link;
-  //   image.alt = this._name;
-
-  //   openPopup(previewImageModal);
-  // }
-
-  // _handleCardImage;
 
   _getTemplate() {
     return document
