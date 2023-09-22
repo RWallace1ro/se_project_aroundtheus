@@ -6,6 +6,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import { initialCards, selectors } from "../utils/constants.js";
+import { validationSettings } from "../utils/constants.js";
 
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Element                                                  */
@@ -31,14 +32,6 @@ const profileEditForm = profileEditModal.querySelector(".modal__form");
 /*----------------------------------------------------------------------------------------------------------*/
 /*                                                 Validation                                                                                       */
 /*--------------------------------------------------------------------------------------------------------- */
-
-const validationSettings = {
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disable",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
 
 const editFormValidator = new FormValidator(
   validationSettings,
@@ -100,11 +93,11 @@ const cardSection = new Section(
   {
     items: initialCards,
     renderer: (data) => {
-      const cardEl = new Card(data, selectors.cardTemplate, (imgData) => {
+      const renderCard = new Card(data, selectors.cardTemplate, (imgData) => {
         cardPreviewImageModal.open(imgData);
       });
 
-      cardSection.addItem(cardEl.getView());
+      cardSection.addItem(renderCard.getView());
     },
   },
   selectors.cardSection
@@ -125,6 +118,19 @@ const formProfileEditModal = new PopupWithForm(
   handleProfileEditSubmit
 );
 formProfileEditModal.setEventListeners();
+const formSection = new Section(
+  {
+    items: initialCards,
+    renderer: (data) => {
+      const formEl = new Card(data, selectors.cardTemplate, (formData) => {
+        formProfileEditModal.open(formData);
+      });
+
+      formSection.addItem(formEl.getView());
+    },
+  },
+  selectors.formSection
+);
 
 export { cardPreviewImageModal };
 export { formProfileEditModal };

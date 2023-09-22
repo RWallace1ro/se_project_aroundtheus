@@ -35,3 +35,11 @@ export const selectors = {
   userInfoProfileTitle: "#profile-title-input",
   userInfoProfileDescription: "#profile-description-input",
 };
+
+export const validationSettings = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disable",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};

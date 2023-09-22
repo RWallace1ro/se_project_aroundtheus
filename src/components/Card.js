@@ -19,7 +19,6 @@ class Card {
         this._handleDeleteButton();
       });
 
-    this._cardElement.querySelector(".card__image");
     this._cardImage.addEventListener("click", () => {
       this._handleImageClick({ link: this._link, name: this._name });
     });
