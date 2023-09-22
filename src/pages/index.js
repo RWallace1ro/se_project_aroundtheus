@@ -118,19 +118,6 @@ const formProfileEditModal = new PopupWithForm(
   handleProfileEditSubmit
 );
 formProfileEditModal.setEventListeners();
-const formSection = new Section(
-  {
-    items: initialCards,
-    renderer: (data) => {
-      const formEl = new Card(data, selectors.cardTemplate, (formData) => {
-        formProfileEditModal.open(formData);
-      });
-
-      formSection.addItem(formEl.getView());
-    },
-  },
-  selectors.formSection
-);
 
 export { cardPreviewImageModal };
 export { formProfileEditModal };
