@@ -93,11 +93,8 @@ const cardSection = new Section(
   {
     items: initialCards,
     renderer: (data) => {
-      const renderCard = new Card(data, selectors.cardTemplate, (imgData) => {
-        cardPreviewImageModal.open(imgData);
-      });
-
-      cardSection.addItem(renderCard.getView());
+      const card = renderCard(data);
+      cardSection.addItem(card);
     },
   },
   selectors.cardSection
