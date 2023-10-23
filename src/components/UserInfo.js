@@ -1,6 +1,4 @@
-//import Api from "../components/Api.js";
-
-export default class UserInfo extends Api {
+export default class UserInfo {
   constructor(titleSelector, descriptionSelector) {
     this._titleElement = document.querySelector(titleSelector);
     this._descriptionElement = document.querySelector(descriptionSelector);
@@ -18,11 +16,3 @@ export default class UserInfo extends Api {
     this._descriptionElement.textContent = description;
   }
 }
-
-api.getUserInfo().then((userData) => {
-  userData.setUserInfo({
-    title: userData.name,
-    description: userData.about,
-  });
-  user.setAvatatarInfo(userData, avatar);
-});

@@ -7,7 +7,7 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import { initialCards, selectors } from "../utils/constants.js";
 import { validationSettings } from "../utils/constants.js";
-//import Api from "../components/Api.js";
+import { Api } from "../components/Api.js";
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Element                                                  */
 /*---------------------------------------------------------------------------------------------------------*/
@@ -64,16 +64,16 @@ const handleEditClick = () => {
 
 profileEditButton.addEventListener("click", handleEditClick);
 
-function handleAddCardSubmit({ title, description }) {
-  const cardData = {
-    name: title,
-    link: description,
-  };
+// function handleAddCardSubmit({ title, description }) {
+//   const cardData = {
+//     name: title,
+//     link: description,
+//   };
 
-  const card = renderCard(cardData);
-  cardSection.addItem(card);
-  addCardPopup.close();
-}
+//   const card = renderCard(cardData);
+//   cardSection.addItem(card);
+//   addCardPopup.close();
+// }
 
 addNewCardButton.addEventListener("click", () => {
   addCardPopup.open();
@@ -105,7 +105,10 @@ cardPreviewImageModal.setEventListeners();
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-const addCardPopup = new PopupWithForm("#add-card-modal", handleAddCardSubmit);
+const addCardPopup = new PopupWithForm(
+  "#add-card-modal",
+  handleAddCardFormSubmit
+);
 
 addCardPopup.setEventListeners();
 
