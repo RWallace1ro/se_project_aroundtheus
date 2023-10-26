@@ -54,6 +54,37 @@ function handleProfileEditSubmit(formData) {
   formProfileEditModal.close();
 }
 
+function handleDeleteClick() {
+  deleteModal.open();
+  const id = cardElement.getID();
+  api.deleteCard(id).then(() => {
+    cardElement.handleDeleteButton();
+    deleteModal.close();
+  });
+}
+
+function handleLikeClick() {
+  const id = cardElement.getID();
+  if (cardElement.isLiked()) {
+    api
+      .unlikeCard(id)
+      .then((data) => {
+        cardelement.setlikes(data.likes);
+      })
+      .catch((error) => console.error(error));
+  } else {
+    api
+      .likeCard(id)
+      .then((data) => {
+        cardElement.setlikes(data.likes);
+      })
+      .catch((error) => console.error(error));
+  }
+}
+
+function handleImageClick() {
+  cardPreviewImageModal.open(imageData);
+}
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Listeners                                          */
 /*---------------------------------------------------------------------------------------------------------*/
@@ -81,10 +112,16 @@ addNewCardButton.addEventListener("click", () => {
 });
 
 function renderCard(cardData) {
-  const card = new Card(cardData, selectors.cardTemplate, (imgData) => {
-    cardPreviewImageModal.open(imgData);
-  });
-
+  const card = new Card(
+    cardData,
+    selectors.cardTemplate,
+    handleDeleteClick,
+    handleLikeClick,
+    handleImageClick,
+    (imgData) => {
+      cardPreviewImageModal.open(imgData);
+    }
+  );
   return card.getView();
 }
 
@@ -143,7 +180,6 @@ function handleAddCardFormSubmit(cardData) {
 
     .finally(() => addCardPopup.setLoading(false, "addCard"));
 }
-
 function handleDeleteCard(cardID) {
   deleteCardPopup.open();
   deleteCardPopup.setSubmitAction(() => {
@@ -164,7 +200,7 @@ function handleDeleteCard(cardID) {
   });
 }
 
-const updateAvatarForm = new PopupWithForm("profile-image-modal", (avatar) => {
+const updateAvatarForm = new PopupWithForm("#profile-image-modal", (avatar) => {
   api
     .updateAvatar(avatar)
     .then((avatar) => {

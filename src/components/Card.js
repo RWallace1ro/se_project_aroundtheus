@@ -11,7 +11,7 @@ class Card {
     this._name = name;
     this._link = link;
     this._cardID = cardID;
-    this._id = _id;
+    this.id = _id;
     (this.likes = likes),
       (this.isLiked = isLiked),
       (this._cardSelector = cardSelector);
@@ -36,6 +36,7 @@ class Card {
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
         this._handleDeleteButton();
+        this._handleDeleteClick();
       });
 
     // this._deleteButton.addEventListener("click", () => {
@@ -47,7 +48,7 @@ class Card {
     });
   }
 
-  cardIsLiked() {
+  isLiked() {
     if (!this._cardIsLiked) {
       return true;
     } else {
@@ -88,12 +89,16 @@ class Card {
     this._cardImage = this._cardElement.querySelector(".card__image");
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
-    // this._likeButton = this._likes;
-    // this.deleteButtom = this._deleteCard
+    this._likeButton = this._likes;
+    this.deleteButtom = this._deleteButton;
     this._cardElement.querySelector(".card__title").textContent = this._name;
 
     this._setEventListeners();
     return this._cardElement;
+  }
+
+  getID() {
+    return this._id();
   }
 }
 

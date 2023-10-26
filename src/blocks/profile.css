@@ -29,6 +29,15 @@
   cursor: pointer;
 }
 
+.profile__edit_button_avatar:first-of-type {
+  width: 26px;
+  height: 26px;
+  top: 100px;
+  left: 247px;
+  align-items: start;
+  color: #fff;
+}
+
 .profile__add-button {
   background: transparent url(../images/add-icon.svg) center no-repeat;
   width: 150px;

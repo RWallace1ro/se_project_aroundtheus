@@ -32,7 +32,7 @@
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
-              class="profile__edit-button"
+              class="profile__edit-button profile__edit_button_avatar"
               id="profile-edit-button"
               type="button"
             ></button>
@@ -83,6 +83,40 @@
             class="modal__error"
             id="profile-description-input-error"
           ></span>
+          <button class="modal__button" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+    <!--UpdateAvatarForm-->
+    <div class="modal" id="profile-image-modal">
+      <div class="modal__container modal__container_type_avatar">
+        <button
+          class="modal__close"
+          id="update-avatar-close-button"
+          type="button"
+        ></button>
+        <h3 class="modal__heading">Change profile picture</h3>
+        <form class="modal__form">
+          <!-- <input
+            class="modal__input"
+            name="title"
+            type="text"
+            id="avatar-title-input"
+            placeholder="Name"
+            minlength="2"
+            maxlength="40"
+            required
+          /> -->
+          <span class="modal__error" id="avatar-input-error"></span>
+          <input
+            class="modal__input"
+            name="avatar"
+            type="URL"
+            id="avatar-input"
+            placeholder="Image URL"
+            required
+          />
+          <span class="modal__error" id="avatar-input-error"></span>
           <button class="modal__button" type="submit">Save</button>
         </form>
       </div>
@@ -152,6 +186,7 @@
           /> -->
           <span class="modal__delete" id="modal-delete"></span>
           <button class="modal__button" type="submit">Yes</button>
+          <!-- <span class="message" type="text">This post has been deleted</span> -->
         </form>
       </div>
     </div>

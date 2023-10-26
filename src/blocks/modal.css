@@ -38,15 +38,20 @@
 .modal__container_type_delete {
   background-color: #fff;
   visibility: visible;
-  max-width: 430px;
+  /* max-width: 430px; */
   height: 181px;
   top: 100px;
   border-radius: 10px;
   opacity: 50%;
 }
 
-/* .modal__delete {
-} */
+.modal__container_type_avatar {
+  /* width: 430px; */
+  height: 272px;
+  left: 425px;
+  top: 100px;
+  border: 1px;
+}
 
 .modal__close {
   border: none;
