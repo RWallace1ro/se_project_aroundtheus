@@ -71,14 +71,14 @@ function handleLikeClick() {
       .then((data) => {
         cardelement.setlikes(data.likes);
       })
-      .catch((error) => console.error(error));
+      .catch((err) => console.error(err));
   } else {
     api
       .likeCard(id)
       .then((data) => {
         cardElement.setlikes(data.likes);
       })
-      .catch((error) => console.error(error));
+      .catch((err) => console.error(err));
   }
 }
 
@@ -174,12 +174,13 @@ function handleAddCardFormSubmit(cardData) {
       renderCard(res, cardListEL);
       addCardPopup.close();
     })
-    .catch((error) => {
-      console.error(error);
+    .catch((err) => {
+      console.error(err);
     })
 
     .finally(() => addCardPopup.setLoading(false, "addCard"));
 }
+
 function handleDeleteCard(cardID) {
   deleteCardPopup.open();
   deleteCardPopup.setSubmitAction(() => {
@@ -207,8 +208,8 @@ const updateAvatarForm = new PopupWithForm("#profile-image-modal", (avatar) => {
       userData.getUserInfo(avatar.link);
       updateAvatarForm.close();
     })
-    .catch((error) => {
-      console.error(error);
+    .catch((err) => {
+      console.error(err);
     });
 });
 

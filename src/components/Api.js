@@ -109,7 +109,7 @@ export class Api {
       });
   }
 
-  createCard(name, link) {
+  addCard(name, link) {
     return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
       method: "POST",
       headers: {
@@ -120,6 +120,10 @@ export class Api {
         name: name,
         link: link,
       }),
+      // body: JSON.stringify({
+      //   name: "test",
+      //   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+      // }),
     })
       .then((res) => {
         if (res.ok) {
