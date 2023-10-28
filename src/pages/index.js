@@ -171,7 +171,8 @@ function handleAddCardFormSubmit(cardData) {
   api
     .addCard(cardData)
     .then((res) => {
-      renderCard(res, cardListEL);
+      const card = renderCard(res);
+      cardSection.addItem(card);
       addCardPopup.close();
     })
     .catch((err) => {
@@ -180,6 +181,20 @@ function handleAddCardFormSubmit(cardData) {
 
     .finally(() => addCardPopup.setLoading(false, "addCard"));
 }
+
+api
+  .getInitialCards()
+  .then((res) => {
+    const card = new card(res, addCardForm, addCard, api);
+    card.render(cardData);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+// .finally(() => {
+//   addCardPopup.setLoading(false);
+// });
 
 function handleDeleteCard(cardID) {
   deleteCardPopup.open();
