@@ -91,6 +91,7 @@ class Card {
     this._cardImage.alt = this._name;
     this._likeButton = this._likes;
     this.deleteButtom = this._deleteButton;
+
     this._cardElement.querySelector(".card__title").textContent = this._name;
 
     this._setEventListeners();

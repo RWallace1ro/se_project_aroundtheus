@@ -5,7 +5,7 @@ export class Api {
   }
 
   getInitialCards() {
-    return fetch("https://around-api.en.tripleten-services.com/v1", {
+    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
       headers: {
         authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
       },
@@ -18,15 +18,12 @@ export class Api {
     });
   }
 
-  getUserInfo(name, about, avatar, myID) {
+  getUserInfo() {
     return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
       method: "GET",
       headers: {
-        name: name,
-        about: about,
-        avatar: avatar,
-        myID: myID,
         authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
+        "Content-Type": "application/json",
       },
     })
       .then((res) => {
