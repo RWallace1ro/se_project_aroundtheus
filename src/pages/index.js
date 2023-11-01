@@ -42,8 +42,6 @@ let cardSection;
 api
   .getInitialCards()
   .then((res) => {
-    // const card = new Card(res, addCardForm, addCard, api);
-    // card.render(cardData);
     cardSection = new Section(
       {
         items: res,
@@ -63,24 +61,31 @@ api
 api
   .getUserInfo()
   .then((userData) => {
-    userData = userInfo.getUserInfo();
-    profileTitleInput.value = userData.title;
-    profileDescriptionInput.value = userData.description;
-    // cardSection = new Section(
-    //   {
-    //     items: res,
-    //     renderer: (data) => {
-    //       const card = renderCard(data);
-    //       cardSection.addItem(card);
-    //     },
-    //   },
-    //   selectors.cardSection
-    // );
-    // cardSection.renderItems();
+    userInfo.setUserInfo(userData.name, userData.about);
   })
   .catch((err) => {
     console.error(err);
   });
+
+api
+  .updateAvatar()
+  .then((userData) => {
+    avatar.setUserInfo(userData.name, userData.about, userData.avatar);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+api
+  .addCard()
+  .then((cardData) => {
+    addCard(cardData.link, cardData.name);
+    cardSection.addItem(cardData);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
 /*----------------------------------------------------------------------------------------------------------*/
 /*                                                 Validation                                                                                       */
 /*--------------------------------------------------------------------------------------------------------- */
@@ -92,9 +97,9 @@ const editFormValidator = new FormValidator(
 const addFormValidator = new FormValidator(validationSettings, addCardForm);
 
 function fillProfileForm() {
-  // const userData = userInfo.getUserInfo();
-  // profileTitleInput.value = userData.title;
-  // profileDescriptionInput.value = userData.description;
+  const userData = userInfo.getUserInfo();
+  profileTitleInput.value = userData.title;
+  profileDescriptionInput.value = userData.description;
 }
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Handlers                                           */
@@ -286,7 +291,7 @@ const updateAvatarForm = new PopupWithForm("#profile-image-modal", (avatar) => {
   api
     .updateAvatar(avatar)
     .then((avatar) => {
-      userData.getUserInfo(avatar.link);
+      userData.updateAvatar(avatar.link, avatar.name);
       updateAvatarForm.close();
     })
     .catch((err) => {

@@ -25,16 +25,15 @@ export class Api {
         authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
         "Content-Type": "application/json",
       },
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+    // .catch((err) => {
+    //   console.error(err);
+    // });
   }
 
   updateUserProfile(name, about) {
