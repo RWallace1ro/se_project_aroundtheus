@@ -16,11 +16,17 @@
   <body>
     <div class="page">
       <header class="header">
-        <img
-          src="<%=require('./images/logo.svg')%>"
-          class="logo"
-          alt="Around the U.S. Logo"
-        />
+        <!-- <div> -->
+          <img
+            src="<%=require('./images/logo.svg')%>"
+            class="logo"
+            alt="Around the U.S. Logo"
+          />
+          <!-- <button class="avatar__edit-button"
+            id="avatar-edit-button"
+            type="button"> 
+          </button> -->
+        <!-- </div> -->
       </header>
       <main class="content">
         <section class="profile page__section">
@@ -29,10 +35,30 @@
             class="profile__image"
             alt="Avatar"
           />
+          <div>
+            <button class="avatar__edit-button"
+              id="avatar-edit-button"
+              type="button"> 
+            </button>
+            <h3 class="modal__heading">Change profile picture</h3>
+            <form class="modal__form modal__avatar-form"> 
+              <span class="modal__error" id="avatar-input-error"></span>
+              <input
+                class="modal__input"
+                name="avatar"
+                type="URL"
+                id="avatar-input"
+                placeholder="Image URL"
+                required
+              />
+              <span class="modal__error" id="avatar-input-error"></span>
+              <button class="modal__button" type="submit">Save</button>
+            </form>
+         </div> 
           <div class="profile__info">
             <h1 class="profile__title"></h1>
             <button
-              class="profile__edit-button profile__edit_button_avatar"
+              class="profile__edit-button"
               id="profile-edit-button"
               type="button"
             ></button>
@@ -78,6 +104,7 @@
             minlength="2"
             maxlength="200"
             required
+
           />
           <span
             class="modal__error"
@@ -88,7 +115,7 @@
       </div>
     </div>
     <!--UpdateAvatarForm-->
-    <div class="modal" id="profile-image-modal">
+    <!-- <div class="modal" id="profile-image-modal">
       <div class="modal__container modal__container_type_avatar">
         <button
           class="modal__close"
@@ -96,7 +123,7 @@
           type="button"
         ></button>
         <h3 class="modal__heading">Change profile picture</h3>
-        <form class="modal__form">
+        <form class="modal__form"> -->
           <!-- <input
             class="modal__input"
             name="title"
@@ -107,7 +134,7 @@
             maxlength="40"
             required
           /> -->
-          <span class="modal__error" id="avatar-input-error"></span>
+          <!-- <span class="modal__error" id="avatar-input-error"></span>
           <input
             class="modal__input"
             name="avatar"
@@ -120,7 +147,7 @@
           <button class="modal__button" type="submit">Save</button>
         </form>
       </div>
-    </div>
+    </div> -->
     <!--Add card modal-->
     <div class="modal" id="add-card-modal">
       <div class="modal__container">

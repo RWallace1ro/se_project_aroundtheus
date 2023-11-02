@@ -67,24 +67,24 @@ api
     console.error(err);
   });
 
-api
-  .updateAvatar()
-  .then((userData) => {
-    avatar.setUserInfo(userData.name, userData.about, userData.avatar);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+// api
+//   .updateAvatar(name, about, avatar)
+//   .then((userData) => {
+//     avatar.setUserInfo(userData.name, userData.about, userData.avatar);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
 
-api
-  .addCard()
-  .then((cardData) => {
-    addCard(cardData.link, cardData.name);
-    cardSection.addItem(cardData);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+// api
+//   .addCard(name, link)
+//   .then((cardData) => {
+//     addCard(cardData.link, cardData.name);
+//     cardSection.addItem(cardData);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
 
 /*----------------------------------------------------------------------------------------------------------*/
 /*                                                 Validation                                                                                       */
