@@ -31,17 +31,15 @@
 
 .avatar__edit-button {
   background: transparent url(../images/edit-icon.svg) center no-repeat;
-  /* box-sizing: border-box; */
-  /* background-size: 10px 10px; */
+  background-size: contain;
   width: 26px;
   height: 26px;
-  /* margin-left: 18px; */
-  /* border: 1px solid #fff;  */
   color: #fff;
   transition: 0.5s;
-  top: 206px;
-  left: 247px;
+  top: 85px;
+  left: 50px;
   border: none;
+  position: absolute;
 }
 
 .avatar__edit-button:hover {

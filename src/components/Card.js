@@ -2,7 +2,7 @@
 
 class Card {
   constructor(
-    { name, link, cardID, likes, isLiked, _id },
+    { name, link, cardID, likes, isLiked, updateIsLiked, disLiked, _id },
     cardSelector,
     handleImageClick,
     handleLikeClick,
@@ -11,11 +11,13 @@ class Card {
     this._name = name;
     this._link = link;
     this._cardID = cardID;
-    this.id = _id;
+    this._id = _id;
     (this.likes = likes),
       (this.isLiked = isLiked),
-      (this._cardSelector = cardSelector);
-    this._handleImageClick = handleImageClick;
+      (this._updateIsLiked = updateIsLiked),
+      (this.disLiked = disLiked),
+      (this._cardSelector = cardSelector),
+      (this._handleImageClick = handleImageClick);
     this._handleLikeClick = handleLikeClick;
     this._handleDeleteClick = handleDeleteClick;
   }
@@ -29,7 +31,7 @@ class Card {
       });
 
     // this._likeButton.addEventListener("click", () => {
-    //   this._updateIsLaked(this._cardID);
+    //   this._updateIsLiked(this._cardID);
     // });
 
     this._cardElement

@@ -158,7 +158,7 @@ export class Api {
       });
   }
 
-  likeCard(name, about) {
+  likeCard(cardID, likes, _id) {
     return fetch("around-api.en.tripleten-services.com/v1/cards/cardId/likes", {
       method: "PUT",
       headers: {
@@ -166,8 +166,11 @@ export class Api {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: name,
-        about: about,
+        // name: name,
+        // about: about,
+        cardID: cardID,
+        likes: likes,
+        _id: _id,
       }),
     })
       .then((res) => {
@@ -181,16 +184,18 @@ export class Api {
       });
   }
 
-  dislikeCard(name, about, cardID) {
+  dislikeCard(cardID, disLike, _id) {
     return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
       method: "DELETE",
       headers: {
         authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
       },
       body: JSON.stringify({
-        name: name,
-        about: about,
+        // name: name,
+        // about: about,
         cardID: cardID,
+        disLike: disLike,
+        _id: _id,
       }),
     })
       .then((res) => {

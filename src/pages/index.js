@@ -121,10 +121,10 @@ function handleDeleteClick() {
 }
 
 function handleLikeClick() {
-  const id = cardElement.getID();
+  const _id = cardElement.getID();
   if (cardElement.isLiked()) {
     api
-      .unlikeCard(id)
+      .dislikeCard(_id)
       .then((data) => {
         cardelement.setlikes(data.likes);
       })
@@ -138,6 +138,14 @@ function handleLikeClick() {
       .catch((err) => console.error(err));
   }
 }
+
+const likeButton = document.querySelector(".card__like-button");
+
+likeButton.addEventListener("click", () => {
+  likeCard();
+});
+
+// .setEventListeners();
 
 function handleImageClick() {
   cardPreviewImageModal.open(imageData);
@@ -297,6 +305,12 @@ const updateAvatarForm = new PopupWithForm("#profile-image-modal", (avatar) => {
     .catch((err) => {
       console.error(err);
     });
+});
+
+const editPencilIcon = document.querySelector("#avatar-edit-button");
+
+editPencilIcon.addEventListener("click", () => {
+  updateAvatarForm.open();
 });
 
 updateAvatarForm.setEventListeners();
