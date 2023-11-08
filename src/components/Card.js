@@ -27,18 +27,26 @@ class Card {
       .querySelector(".card__like-button")
       .addEventListener("click", () => {
         this._handleLikeButton();
-        //this.updateIsLiked(this._cardID);
+        //this._updateIsLiked(this._cardID);
       });
 
     // this._likeButton.addEventListener("click", () => {
     //   this._updateIsLiked(this._cardID);
     // });
 
+    this._likeButton.addEventListener("click", () => {
+      this._likeButton.classList.toggle(".card__like-button");
+    });
+
+    // this._likeButton.addEventListener("click", () => {
+    //   likeCard();
+    // });
+
     this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
         this._handleDeleteButton();
-        this._handleDeleteClick();
+        //this._handleDeleteClick();
       });
 
     // this._deleteButton.addEventListener("click", () => {

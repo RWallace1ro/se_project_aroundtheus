@@ -141,9 +141,9 @@ function handleLikeClick() {
 
 const likeButton = document.querySelector(".card__like-button");
 
-likeButton.addEventListener("click", () => {
-  likeCard();
-});
+// likeButton.addEventListener("click", () => {
+//   likeCard();
+// });
 
 // .setEventListeners();
 
