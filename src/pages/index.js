@@ -120,26 +120,25 @@ function handleDeleteClick() {
   });
 }
 
-function handleLikeClick() {
-  const _id = cardElement.getID();
-  if (cardElement.isLiked()) {
+function handleLikeClick(card) {
+  if (card.isLiked) {
     api
-      .dislikeCard(_id)
+      .dislikeCard(card._id)
       .then((data) => {
-        cardelement.setlikes(data.likes);
+        card.setLikes(data.isLiked);
       })
       .catch((err) => console.error(err));
   } else {
     api
-      .likeCard(id)
+      .likeCard(card._id)
       .then((data) => {
-        cardElement.setlikes(data.likes);
+        card.setLikes(data.isLiked);
       })
       .catch((err) => console.error(err));
   }
 }
 
-const likeButton = document.querySelector(".card__like-button");
+//const likeButton = document.querySelector(".card__like-button");
 
 // likeButton.addEventListener("click", () => {
 //   likeCard();

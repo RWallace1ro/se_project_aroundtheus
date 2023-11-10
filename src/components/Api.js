@@ -158,7 +158,7 @@ export class Api {
       });
   }
 
-  likeCard(cardID, likes, _id) {
+  likeCard(cardID, isLiked, _id) {
     return fetch("around-api.en.tripleten-services.com/v1/cards/cardId/likes", {
       method: "PUT",
       headers: {
@@ -169,7 +169,7 @@ export class Api {
         // name: name,
         // about: about,
         cardID: cardID,
-        likes: likes,
+        isLiked: isLiked,
         _id: _id,
       }),
     })
