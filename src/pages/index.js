@@ -123,14 +123,14 @@ function handleDeleteClick() {
 function handleLikeClick(card) {
   if (card.isLiked) {
     api
-      .dislikeCard(card._id)
+      .dislikeCard(card.id)
       .then((data) => {
         card.setLikes(data.isLiked);
       })
       .catch((err) => console.error(err));
   } else {
     api
-      .likeCard(card._id)
+      .likeCard(card.id)
       .then((data) => {
         card.setLikes(data.isLiked);
       })

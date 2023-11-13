@@ -132,19 +132,15 @@ export class Api {
       });
   }
 
-  deleteCard(name, about) {
+  deleteCard() {
     return fetch(
-      "https://around-api.en.tripleten-services.com/v1/cards/cardId",
+      "https://around-api.en.tripleten-services.com/v1/cards/${_id}",
       {
         method: "DELETE",
         headers: {
           authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name: name,
-          about: about,
-        }),
       }
     )
       .then((res) => {
@@ -158,20 +154,13 @@ export class Api {
       });
   }
 
-  likeCard(cardID, isLiked, _id) {
-    return fetch("around-api.en.tripleten-services.com/v1/cards/cardId/likes", {
+  likeCard() {
+    return fetch("around-api.en.tripleten-services.com/v1/cards/${_id}/likes", {
       method: "PUT",
       headers: {
         authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        // name: name,
-        // about: about,
-        cardID: cardID,
-        isLiked: isLiked,
-        _id: _id,
-      }),
     })
       .then((res) => {
         if (res.ok) {
@@ -184,19 +173,19 @@ export class Api {
       });
   }
 
-  dislikeCard(cardID, disLike, _id) {
+  dislikeCard() {
     return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
       method: "DELETE",
       headers: {
         authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
       },
-      body: JSON.stringify({
-        // name: name,
-        // about: about,
-        cardID: cardID,
-        disLike: disLike,
-        _id: _id,
-      }),
+      // body: JSON.stringify({
+      //   // name: name,
+      //   // about: about,
+      //   cardID: cardID,
+      //   disLike: disLike,
+      //   _id: _id,
+      // }),
     })
       .then((res) => {
         if (res.ok) {
