@@ -1,11 +1,11 @@
 export class Api {
   constructor(config) {
-    this.url = config.url;
+    this.url = config.baseUrl;
     this.headers = config.headers;
   }
 
   getInitialCards() {
-    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+    return fetch(`${this.url}/cards`, {
       headers: {
         authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
       },
@@ -116,10 +116,6 @@ export class Api {
         name: name,
         link: link,
       }),
-      // body: JSON.stringify({
-      //   name: "test",
-      //   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-      // }),
     })
       .then((res) => {
         if (res.ok) {
@@ -154,8 +150,8 @@ export class Api {
       });
   }
 
-  likeCard() {
-    return fetch("around-api.en.tripleten-services.com/v1/cards/${_id}/likes", {
+  likeCard(id) {
+    return fetch(`${this.url}/cards/${id}/likes`, {
       method: "PUT",
       headers: {
         authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
@@ -173,19 +169,12 @@ export class Api {
       });
   }
 
-  dislikeCard() {
-    return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+  dislikeCard(id) {
+    return fetch(`${this.url}/cards/${id}/likes`, {
       method: "DELETE",
       headers: {
         authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
       },
-      // body: JSON.stringify({
-      //   // name: name,
-      //   // about: about,
-      //   cardID: cardID,
-      //   disLike: disLike,
-      //   _id: _id,
-      // }),
     })
       .then((res) => {
         if (res.ok) {
@@ -198,11 +187,3 @@ export class Api {
       });
   }
 }
-
-// const api = new Api({
-//   baseUrl: "https://around-api.en.tripleten-services.com/v1",
-//   headers: {
-//     authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
-//     "Content-Type": "application/json",
-//   },
-// });

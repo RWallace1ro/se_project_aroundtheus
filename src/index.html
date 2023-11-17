@@ -16,32 +16,32 @@
   <body>
     <div class="page">
       <header class="header">
-        
-          <img
-            src="<%=require('./images/logo.svg')%>"
-            class="logo"
-            alt="Around the U.S. Logo"
-          />
+        <img
+          src="<%=require('./images/logo.svg')%>"
+          class="logo"
+          alt="Around the U.S. Logo"
+        />
       </header>
       <main class="content">
-        <section class="profile page__section">  
+        <section class="profile page__section">
           <div>
             <img
               src="<%=require('./images/jacques-cousteau.png')%>"
               class="profile__image"
               alt="Avatar"
             />
-            <button class="avatar__edit-button"
+            <button
+              class="avatar__edit-button"
               id="avatar-edit-button"
-              type="button"> 
-            </button>
+              type="button"
+            ></button>
           </div>
           <!-- <div> -->
-            <!-- <button class="avatar__edit-button"
+          <!-- <button class="avatar__edit-button"
               id="avatar-edit-button"
               type="button"> 
             </button> -->
-            <!--<h3 class="modal__heading">Change profile picture</h3>
+          <!--<h3 class="modal__heading">Change profile picture</h3>
             <form class="modal__form modal__avatar-form"> 
               <span class="modal__error" id="avatar-input-error"></span>
               <input
@@ -55,7 +55,7 @@
               <span class="modal__error" id="avatar-input-error"></span>
               <button class="modal__button" type="submit">Save</button>
             </form>-->
-         <!-- </div>   -->
+          <!-- </div>   -->
           <div class="profile__info">
             <h1 class="profile__title"></h1>
             <button
@@ -105,7 +105,6 @@
             minlength="2"
             maxlength="200"
             required
-
           />
           <span
             class="modal__error"
@@ -116,7 +115,7 @@
       </div>
     </div>
     <!--UpdateAvatarForm-->
-     <div class="modal" id="profile-image-modal">
+    <div class="modal" id="profile-image-modal">
       <div class="modal__container modal__container_type_avatar">
         <button
           class="modal__close"
@@ -124,7 +123,7 @@
           type="button"
         ></button>
         <h3 class="modal__heading">Change profile picture</h3>
-        <form class="modal__form"> 
+        <form class="modal__form">
           <span class="modal__error" id="avatar-input-error"></span>
           <input
             class="modal__input"
@@ -138,7 +137,7 @@
           <button class="modal__button" type="submit">Save</button>
         </form>
       </div>
-    </div> 
+    </div>
     <!--Add card modal-->
     <div class="modal" id="add-card-modal">
       <div class="modal__container">
@@ -173,8 +172,8 @@
         </form>
       </div>
     </div>
-    <!--Delete card modal-->
-    <!-- <div class="modal" id="delete-card-modal">
+    <!-- Delete card modal -->
+    <div class="modal" id="delete-card-modal">
       <div class="modal__container modal__container_type_delete">
         <button
           class="modal__close"
@@ -182,33 +181,13 @@
           type="button"
         ></button>
         <h3 class="modal__heading">Are you sure?</h3>
-        <form class="modal__form"> -->
-          <!-- <input
-            class="modal__input"
-            name="title"
-            type="text"
-            id="add-card-input"
-            placeholder="Title"
-            minlength="1"
-            maxlength="30"
-            required
-          />
-          <span class="modal__error" id="add-card-input-error"></span>
-          <input
-            class="modal__input"
-            name="description"
-            type="URL"
-            id="description-input"
-            placeholder="Image URL"
-            required
-          /> -->
-          <!-- <span class="modal__delete" id="modal-delete"></span>
-          <button class="modal__button" type="submit">Yes</button> -->
-          <!-- <span class="message" type="text">This post has been deleted</span> -->
-        <!-- </form> -->
+        <form class="modal__form">
+          <button class="modal__button" type="submit">Yes</button>
+          <span class="message" type="text">This post has been deleted</span>
+        </form>
       </div>
     </div>
-    <!--Preview image modal-->
+    <!-- Preview image modal -->
     <div class="modal" id="preview-image-modal">
       <div class="modal__container modal__container_type_preview">
         <button

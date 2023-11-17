@@ -113,8 +113,8 @@ function handleProfileEditSubmit(formData) {
 
 function handleDeleteClick() {
   deleteModal.open();
-  const id = cardElement.getID();
-  api.deleteCard(id).then(() => {
+  const _id = cardElement.getID();
+  api.deleteCard(_id).then(() => {
     cardElement.handleDeleteButton();
     deleteModal.close();
   });
@@ -123,31 +123,54 @@ function handleDeleteClick() {
 function handleLikeClick(card) {
   if (card.isLiked) {
     api
-      .dislikeCard(card.id)
-      .then((data) => {
-        card.setLikes(data.isLiked);
+      .dislikeCard(card._id)
+      .then(() => {
+        card.handleLikeButton();
       })
       .catch((err) => console.error(err));
   } else {
     api
-      .likeCard(card.id)
-      .then((data) => {
-        card.setLikes(data.isLiked);
+      .likeCard(card._id)
+      .then(() => {
+        card.handleLikeButton();
       })
       .catch((err) => console.error(err));
   }
 }
 
-//const likeButton = document.querySelector(".card__like-button");
-
-// likeButton.addEventListener("click", () => {
-//   likeCard();
-// });
-
-// .setEventListeners();
-
 function handleImageClick() {
   cardPreviewImageModal.open(imageData);
+}
+
+// function handleDeleteButton(card) {
+//   deleteCardPopup.open();
+//   deleteCardPopup.setSubmitAction(() => {});
+//   if (card) {
+//     api.deleteCard(card._id).then(() => {
+//       card.deleteCard();
+//     });
+//     card.remove();
+//   }
+// }
+
+function handleDeleteButton(cardID) {
+  deleteCardPopup.open();
+  deleteCardPopup.setSubmitAction(() => {
+    deleteCardPopup.renderLoading(true);
+    api.deleteCard(cardID);
+    cardElement
+      .remove()
+      .then(() => {
+        cardID.deleteCard();
+        deleteCardPopup.close();
+      })
+      .catch(() => {
+        console.log(err);
+      })
+      .finally(() => {
+        deleteCardPopup.renderLoading(false);
+      });
+  });
 }
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Listeners                                          */
@@ -158,17 +181,6 @@ const handleEditClick = () => {
 };
 
 profileEditButton.addEventListener("click", handleEditClick);
-
-// function handleAddCardSubmit({ title, description }) {
-//   const cardData = {
-//     name: title,
-//     link: description,
-//   };
-
-//   const card = renderCard(cardData);
-//   cardSection.addItem(card);
-//   addCardPopup.close();
-// }
 
 addNewCardButton.addEventListener("click", () => {
   addCardPopup.open();
@@ -182,6 +194,7 @@ function renderCard(cardData) {
     handleDeleteClick,
     handleLikeClick,
     handleImageClick,
+    handleDeleteButton,
     (imgData) => {
       cardPreviewImageModal.open(imgData);
     }
@@ -221,16 +234,6 @@ const formProfileEditModal = new PopupWithForm(
 );
 formProfileEditModal.setEventListeners();
 
-//Api
-
-// const api = new Api({
-//   baseUrl: "https://around-api.en.tripleten-services.com/v1",
-//   headers: {
-//     authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
-//     "Content-Type": "application/json",
-//   },
-// });
-
 function handleAddCardFormSubmit(cardData) {
   addCardPopup.setLoading(true);
   api
@@ -245,53 +248,6 @@ function handleAddCardFormSubmit(cardData) {
     })
 
     .finally(() => addCardPopup.setLoading(false, "addCard"));
-}
-
-//let cardSection;
-
-// api
-//   .getInitialCards()
-//   .then((res) => {
-//     // const card = new Card(res, addCardForm, addCard, api);
-//     // card.render(cardData);
-//     cardSection = new Section(
-//       {
-//         items: res,
-//         renderer: (data) => {
-//           const card = renderCard(data);
-//           cardSection.addItem(card);
-//         },
-//       },
-//       selectors.cardSection
-//     );
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//   });
-
-// .finally(() => {
-
-//   addCardPopup.setLoading(false);
-// });
-
-function handleDeleteCard(cardID) {
-  deleteCardPopup.open();
-  deleteCardPopup.setSubmitAction(() => {
-    deleteCardPopup.renderLoading(true);
-    api.deleteCard(cardID);
-    cardElement
-      .remove()
-      .then(() => {
-        cardID.deleteCard();
-        deleteCardPopup.close();
-      })
-      .catch(() => {
-        console.log(err);
-      })
-      .finally(() => {
-        deleteCardPopup.renderLoading(false);
-      });
-  });
 }
 
 const updateAvatarForm = new PopupWithForm("#profile-image-modal", (avatar) => {
@@ -313,11 +269,6 @@ editPencilIcon.addEventListener("click", () => {
 });
 
 updateAvatarForm.setEventListeners();
-
-// function handleUpdateAvatar(data) {
-//   api.
-// updateAvatar.
-// }
 
 export { cardPreviewImageModal };
 export { formProfileEditModal };
