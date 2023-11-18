@@ -1,25 +1,25 @@
+//import { handleDeleteButton } from "./index.js";
+
 class Card {
   constructor(
-    { name, link, cardID, isLiked, _id },
+    { name, link, cardID, isLiked, _id, cardData },
     cardSelector,
     handleImageClick,
     handleLikeClick,
     handleDeleteClick,
-    handleDeleteSubmit,
-    handleDeleteButton
+    handleDeleteSubmit
   ) {
     this._name = name;
     this._link = link;
     this._cardID = cardID;
     this._id = _id;
     this.isLiked = isLiked;
-
+    this.cardData = cardData;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleLikeClick = handleLikeClick;
     this._handleDeleteClick = handleDeleteClick;
     this._handleDeleteSubmit = handleDeleteSubmit;
-    this._handleDeleteButton = handleDeleteButton;
   }
 
   _setEventListeners() {
@@ -29,20 +29,25 @@ class Card {
       this._handleLikeClick(this);
     });
 
-    this._cardElement
-      .querySelector(".card__delete-button")
-      .addEventListener("click", () => {
-        this._handleDeleteButton(this);
-        //this._handleDeleteClick();
-      });
+    // this._cardElement
+    //   .querySelector(".card__delete-button")
+    //   .addEventListener("click", () => {
+    //     this._handleDeleteButton(this);
+    //     //this._handleDeleteClick();
+    //   });
 
     this._deleteButton.addEventListener("click", () => {
-      this._handleDeleteButton(this);
+      this._handleDeleteSubmit();
     });
 
     this._cardImage.addEventListener("click", () => {
       this._handleImageClick({ link: this._link, name: this._name });
     });
+  }
+
+  handleDeleteSubmit() {
+    const cardID = this.cardData;
+    handleDeleteButton(cardID);
   }
 
   isLiked() {

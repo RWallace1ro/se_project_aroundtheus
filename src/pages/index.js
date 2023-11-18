@@ -153,18 +153,20 @@ function handleImageClick() {
 //   }
 // }
 
+const deleteCardPopup = document.querySelector("deleteCardPopup");
+
 function handleDeleteButton(cardID) {
   deleteCardPopup.open();
   deleteCardPopup.setSubmitAction(() => {
     deleteCardPopup.renderLoading(true);
-    api.deleteCard(cardID);
-    cardElement
-      .remove()
+    api
+      .deleteCard(cardID)
       .then(() => {
+        cardElement.remove();
         cardID.deleteCard();
         deleteCardPopup.close();
       })
-      .catch(() => {
+      .catch((err) => {
         console.log(err);
       })
       .finally(() => {
@@ -172,6 +174,7 @@ function handleDeleteButton(cardID) {
       });
   });
 }
+
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Listeners                                          */
 /*---------------------------------------------------------------------------------------------------------*/
@@ -194,10 +197,10 @@ function renderCard(cardData) {
     handleDeleteClick,
     handleLikeClick,
     handleImageClick,
-    handleDeleteButton,
-    (imgData) => {
-      cardPreviewImageModal.open(imgData);
-    }
+    handleDeleteButton
+    //(imgData) => {
+    // cardPreviewImageModal.open(imgData);
+    //}
   );
   return card.getView();
 }
