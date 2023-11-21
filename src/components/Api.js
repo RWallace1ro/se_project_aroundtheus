@@ -60,7 +60,7 @@ export class Api {
   }
 
   updateAvatar(name, about, avatar) {
-    return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+    return fetch(`https://around-api.en.tripleten-services.com/v1/users/me`, {
       method: "PATCH",
       headers: {
         authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
@@ -84,7 +84,7 @@ export class Api {
   }
 
   getCards(name, link, _id) {
-    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+    return fetch(`https://around-api.en.tripleten-services.com/v1/cards`, {
       method: "GET",
       headers: {
         name: name,
@@ -106,7 +106,7 @@ export class Api {
   }
 
   addCard({ name, link }) {
-    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+    return fetch(`https://around-api.en.tripleten-services.com/v1/cards`, {
       method: "POST",
       headers: {
         authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
@@ -128,17 +128,14 @@ export class Api {
       });
   }
 
-  deleteCard() {
-    return fetch(
-      "https://around-api.en.tripleten-services.com/v1/cards/${_id}",
-      {
-        method: "DELETE",
-        headers: {
-          authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
-          "Content-Type": "application/json",
-        },
-      }
-    )
+  deleteCard(cardID) {
+    return fetch(`${this.url}/cards/${cardID}`, {
+      method: "DELETE",
+      headers: {
+        authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => {
         if (res.ok) {
           return res.json();

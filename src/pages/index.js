@@ -8,8 +8,7 @@ import UserInfo from "../components/UserInfo.js";
 import { initialCards, selectors } from "../utils/constants.js";
 import { validationSettings } from "../utils/constants.js";
 import { Api } from "../components/Api.js";
-import PopupWithConfirmation from "../components/PopupWithconfirmation.js";
-
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Element                                                  */
 /*---------------------------------------------------------------------------------------------------------*/
@@ -160,9 +159,12 @@ function handleImageClick() {
 //Instantiate the modal
 // Call setEventListeners
 
-const deleteCardPopup = new PopupWithConfirmation(selectors.deleteCardPopup);
+const deleteCardPopup = new PopupWithConfirmation(
+  selectors.deleteCardPopup
+  //handleDeleteSubmit
+);
 
-function handleDeleteButton(cardID) {
+function handleDeleteButton(cardID, cardElement) {
   deleteCardPopup.open();
   deleteCardPopup.setSubmitAction(() => {
     //deleteCardPopup.renderLoading(true);
@@ -184,6 +186,10 @@ function handleDeleteButton(cardID) {
 
 deleteCardPopup.setEventListeners();
 
+// function handleDeleteSubmit() {
+
+// }
+
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Listeners                                          */
 /*---------------------------------------------------------------------------------------------------------*/
@@ -204,9 +210,10 @@ function renderCard(cardData) {
     cardData,
     selectors.cardTemplate,
     // handleDeleteClick,
-    handleLikeClick,
     handleImageClick,
+    handleLikeClick,
     handleDeleteButton
+    //handleDeleteSubmit
     //(imgData) => {
     // cardPreviewImageModal.open(imgData);
     //}
