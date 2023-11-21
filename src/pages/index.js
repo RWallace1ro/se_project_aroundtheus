@@ -94,6 +94,7 @@ const editFormValidator = new FormValidator(
   validationSettings,
   profileEditForm
 );
+
 const addFormValidator = new FormValidator(validationSettings, addCardForm);
 
 function fillProfileForm() {
@@ -111,14 +112,14 @@ function handleProfileEditSubmit(formData) {
   formProfileEditModal.close();
 }
 
-function handleDeleteClick() {
-  deleteModal.open();
-  const _id = cardElement.getID();
-  api.deleteCard(_id).then(() => {
-    cardElement.handleDeleteButton();
-    deleteModal.close();
-  });
-}
+// function handleDeleteClick() {
+//   deleteModal.open();
+//   const _id = cardElement.getID();
+//   api.deleteCard(_id).then(() => {
+//     cardElement.handleDeleteButton();
+//     deleteModal.close();
+//   });
+// }
 
 function handleLikeClick(card) {
   if (card.isLiked) {
@@ -153,12 +154,14 @@ function handleImageClick() {
 //   }
 // }
 
-const deleteCardPopup = document.querySelector("deleteCardPopup");
+//const deleteCardPopup = document.querySelector("deleteCardPopup");
+//Instantiate the modal
+// Call setEventListeners
 
 function handleDeleteButton(cardID) {
   deleteCardPopup.open();
   deleteCardPopup.setSubmitAction(() => {
-    deleteCardPopup.renderLoading(true);
+    //deleteCardPopup.renderLoading(true);
     api
       .deleteCard(cardID)
       .then(() => {
@@ -170,7 +173,7 @@ function handleDeleteButton(cardID) {
         console.log(err);
       })
       .finally(() => {
-        deleteCardPopup.renderLoading(false);
+        //deleteCardPopup.renderLoading(false);
       });
   });
 }
@@ -194,7 +197,7 @@ function renderCard(cardData) {
   const card = new Card(
     cardData,
     selectors.cardTemplate,
-    handleDeleteClick,
+    // handleDeleteClick,
     handleLikeClick,
     handleImageClick,
     handleDeleteButton

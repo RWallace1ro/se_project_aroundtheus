@@ -1,5 +1,5 @@
 import Popup from "./Popup.js";
-//ImageBitmapRenderingContext;
+
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
@@ -29,13 +29,13 @@ export default class PopupWithForm extends Popup {
     super.close();
   }
 
-  setLoading() {
-    // const img = document.createElement("img");
-    // img.src = imageSrc;
-    // return img;
+  renderLoading() {
+    const img = document.createElement("img");
+    img.src = imageSrc;
+    return img;
   }
 
-  loadImage(imageSrc) {
+  loadImage() {
     this.image = image;
     this._popupForm.prepend(image);
   }
