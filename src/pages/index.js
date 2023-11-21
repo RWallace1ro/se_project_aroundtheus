@@ -8,6 +8,8 @@ import UserInfo from "../components/UserInfo.js";
 import { initialCards, selectors } from "../utils/constants.js";
 import { validationSettings } from "../utils/constants.js";
 import { Api } from "../components/Api.js";
+import PopupWithConfirmation from "../components/PopupWithconfirmation.js";
+
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Element                                                  */
 /*---------------------------------------------------------------------------------------------------------*/
@@ -158,6 +160,8 @@ function handleImageClick() {
 //Instantiate the modal
 // Call setEventListeners
 
+const deleteCardPopup = new PopupWithConfirmation(selectors.deleteCardPopup);
+
 function handleDeleteButton(cardID) {
   deleteCardPopup.open();
   deleteCardPopup.setSubmitAction(() => {
@@ -177,6 +181,8 @@ function handleDeleteButton(cardID) {
       });
   });
 }
+
+deleteCardPopup.setEventListeners();
 
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Listeners                                          */

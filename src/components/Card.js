@@ -1,5 +1,3 @@
-//import { handleDeleteButton } from "./index.js";
-
 class Card {
   constructor(
     { name, link, cardID, isLiked, _id, cardData },
