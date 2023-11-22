@@ -63,6 +63,7 @@ api
   .getUserInfo()
   .then((userData) => {
     userInfo.setUserInfo(userData.name, userData.about);
+    userInfo.setAvatar(userData.avatar);
   })
   .catch((err) => {
     console.error(err);
@@ -106,7 +107,11 @@ function fillProfileForm() {
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Handlers                                           */
 /*---------------------------------------------------------------------------------------------------------*/
-const userInfo = new UserInfo(".profile__title", ".profile__description");
+const userInfo = new UserInfo(
+  ".profile__title",
+  ".profile__description",
+  ".profile__image"
+);
 
 function handleProfileEditSubmit(formData) {
   userInfo.setUserInfo(formData.title, formData.description);
@@ -140,7 +145,7 @@ function handleLikeClick(card) {
   }
 }
 
-function handleImageClick() {
+function handleImageClick(imageData) {
   cardPreviewImageModal.open(imageData);
 }
 
@@ -164,15 +169,16 @@ const deleteCardPopup = new PopupWithConfirmation(
   //handleDeleteSubmit
 );
 
-function handleDeleteButton(cardID, cardElement) {
+function handleDeleteButton(cardID, card) {
   deleteCardPopup.open();
   deleteCardPopup.setSubmitAction(() => {
     //deleteCardPopup.renderLoading(true);
     api
       .deleteCard(cardID)
       .then(() => {
-        cardElement.remove();
-        cardID.deleteCard();
+        //cardElement.remove();
+        //cardID.deleteCard();
+        card.removeCard();
         deleteCardPopup.close();
       })
       .catch((err) => {
@@ -266,14 +272,16 @@ function handleAddCardFormSubmit(cardData) {
       console.error(err);
     })
 
-    .finally(() => addCardPopup.setLoading(false, "addCard"));
+    .finally(() => {
+      addCardPopup.setLoading(false, "addCard");
+    });
 }
 
 const updateAvatarForm = new PopupWithForm("#profile-image-modal", (avatar) => {
   api
-    .updateAvatar(avatar)
-    .then((avatar) => {
-      userData.updateAvatar(avatar.link, avatar.name);
+    .updateAvatar(avatar.link)
+    .then((user) => {
+      userInfo.setAvatar(user.avatar);
       updateAvatarForm.close();
     })
     .catch((err) => {

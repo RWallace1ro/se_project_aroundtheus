@@ -59,19 +59,18 @@ export class Api {
       });
   }
 
-  updateAvatar(name, about, avatar) {
-    return fetch(`https://around-api.en.tripleten-services.com/v1/users/me`, {
-      method: "PATCH",
-      headers: {
-        authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: name,
-        about: about,
-        avatar: avatar,
-      }),
-    })
+  updateAvatar(avatar) {
+    return fetch(
+      `https://around-api.en.tripleten-services.com/v1/users/me/avatar`,
+      {
+        method: "PATCH",
+        headers: {
+          authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ avatar }),
+      }
+    )
       .then((res) => {
         if (res.ok) {
           return res.json();

@@ -5,6 +5,8 @@ export default class PopupWithForm extends Popup {
     super(popupSelector);
     this._popupForm = this._popupElement.querySelector(".modal__form");
     this._handleFormSubmit = handleFormSubmit;
+    this._submitButton = this._popupForm.querySelector(".modal__button");
+    this._submitButtonText = this._submitButton.textContent;
   }
 
   _getInputValues() {
@@ -29,6 +31,19 @@ export default class PopupWithForm extends Popup {
     super.close();
   }
 
+  setLoading(isLoading) {
+    if (isLoading) {
+      this._submitButton.textContent = "loading...";
+    } else {
+      this._submitButton.textContent = this._submitButtonText;
+    }
+  }
+
+  // updateAvatar(avatar) {
+  //   if (avatar)
+  //   this.updateAvatar.link =
+  // }
+
   renderLoading() {
     const img = document.createElement("img");
     img.src = imageSrc;
@@ -37,6 +52,6 @@ export default class PopupWithForm extends Popup {
 
   loadImage() {
     this.image = image;
-    this._popupForm.prepend(image);
+    this._popupForm.append(image);
   }
 }
