@@ -31,9 +31,6 @@ export class Api {
       }
       return Promise.reject(`Error: ${res.status}`);
     });
-    // .catch((err) => {
-    //   console.error(err);
-    // });
   }
 
   updateUserProfile(name, about) {

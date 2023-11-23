@@ -4,7 +4,6 @@ class Card {
     cardSelector,
     handleImageClick,
     handleLikeClick,
-    //handleDeleteClick,
     handleDeleteSubmit
   ) {
     this._name = name;
@@ -16,7 +15,6 @@ class Card {
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleLikeClick = handleLikeClick;
-    //this._handleDeleteClick = handleDeleteClick;
     this._handleDeleteSubmit = handleDeleteSubmit;
   }
 

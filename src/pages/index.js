@@ -5,7 +5,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-import { initialCards, selectors } from "../utils/constants.js";
+import { selectors } from "../utils/constants.js";
 import { validationSettings } from "../utils/constants.js";
 import { Api } from "../components/Api.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
@@ -69,25 +69,6 @@ api
     console.error(err);
   });
 
-// api
-//   .updateAvatar(name, about, avatar)
-//   .then((userData) => {
-//     avatar.setUserInfo(userData.name, userData.about, userData.avatar);
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//   });
-
-// api
-//   .addCard(name, link)
-//   .then((cardData) => {
-//     addCard(cardData.link, cardData.name);
-//     cardSection.addItem(cardData);
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//   });
-
 /*----------------------------------------------------------------------------------------------------------*/
 /*                                                 Validation                                                                                       */
 /*--------------------------------------------------------------------------------------------------------- */
@@ -118,15 +99,6 @@ function handleProfileEditSubmit(formData) {
   formProfileEditModal.close();
 }
 
-// function handleDeleteClick() {
-//   deleteModal.open();
-//   const _id = cardElement.getID();
-//   api.deleteCard(_id).then(() => {
-//     cardElement.handleDeleteButton();
-//     deleteModal.close();
-//   });
-// }
-
 function handleLikeClick(card) {
   if (card.isLiked) {
     api
@@ -149,25 +121,7 @@ function handleImageClick(imageData) {
   cardPreviewImageModal.open(imageData);
 }
 
-// function handleDeleteButton(card) {
-//   deleteCardPopup.open();
-//   deleteCardPopup.setSubmitAction(() => {});
-//   if (card) {
-//     api.deleteCard(card._id).then(() => {
-//       card.deleteCard();
-//     });
-//     card.remove();
-//   }
-// }
-
-//const deleteCardPopup = document.querySelector("deleteCardPopup");
-//Instantiate the modal
-// Call setEventListeners
-
-const deleteCardPopup = new PopupWithConfirmation(
-  selectors.deleteCardPopup
-  //handleDeleteSubmit
-);
+const deleteCardPopup = new PopupWithConfirmation(selectors.deleteCardPopup);
 
 function handleDeleteButton(cardID, card) {
   deleteCardPopup.open();
@@ -192,10 +146,6 @@ function handleDeleteButton(cardID, card) {
 
 deleteCardPopup.setEventListeners();
 
-// function handleDeleteSubmit() {
-
-// }
-
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Event Listeners                                          */
 /*---------------------------------------------------------------------------------------------------------*/
@@ -215,32 +165,17 @@ function renderCard(cardData) {
   const card = new Card(
     cardData,
     selectors.cardTemplate,
-    // handleDeleteClick,
     handleImageClick,
     handleLikeClick,
     handleDeleteButton
-    //handleDeleteSubmit
-    //(imgData) => {
-    // cardPreviewImageModal.open(imgData);
-    //}
   );
   return card.getView();
 }
 
 const cardPreviewImageModal = new PopupWithImage(selectors);
-// const cardSection = new Section(
-//   {
-//     items: initialCards,
-//     renderer: (data) => {
-//       const card = renderCard(data);
-//       cardSection.addItem(card);
-//     },
-//   },
-//   selectors.cardSection
-// );
 
 //codes to initialize all instances
-// cardSection.renderItems();
+
 cardPreviewImageModal.setEventListeners();
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();

@@ -40,11 +40,17 @@
   left: 50px;
   border: none;
   position: absolute;
+  /* display: inline-block; */
 }
 
 .avatar__edit-button:hover {
   opacity: 0.6;
   cursor: pointer;
+}
+
+.modal__container_type_avatar {
+  position: relative;
+  display: inline-block;
 }
 
 .profile__add-button {
@@ -110,7 +116,6 @@
     margin-left: 10px;
   }
 }
-
 @media screen and (max-width: 780px) {
   .profile__info {
     grid-template-columns: minmax(auto, 255px) auto;
@@ -143,6 +148,11 @@
 
   .profile__edit-button {
     background-size: 8px 8px;
+  }
+
+  .avatar__edit-button {
+    left: auto;
+    /* z-index:  */
   }
 
   .profile__description {
