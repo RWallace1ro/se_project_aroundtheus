@@ -39,11 +39,6 @@ export default class PopupWithForm extends Popup {
     }
   }
 
-  // updateAvatar(avatar) {
-  //   if (avatar)
-  //   this.updateAvatar.link =
-  // }
-
   renderLoading() {
     const img = document.createElement("img");
     img.src = imageSrc;

@@ -25,13 +25,6 @@ class Card {
       this._handleLikeClick(this);
     });
 
-    // this._cardElement
-    //   .querySelector(".card__delete-button")
-    //   .addEventListener("click", () => {
-    //     this._handleDeleteButton(this);
-    //     //this._handleDeleteClick();
-    //   });
-
     this._deleteButton.addEventListener("click", () => {
       this._handleDeleteSubmit(this._id, this);
     });
