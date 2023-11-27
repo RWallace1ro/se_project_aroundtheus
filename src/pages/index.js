@@ -5,7 +5,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-import { initialCards, selectors } from "../utils/constants.js";
+import { selectors } from "../utils/constants.js";
 import { validationSettings } from "../utils/constants.js";
 import { Api } from "../components/Api.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
@@ -95,22 +95,12 @@ const userInfo = new UserInfo(
 );
 
 function handleProfileEditSubmit(userData) {
-  //userInfo.setUserInfo(formData.title, formData.description);
-  //userInfo.setUserInfo(formData.name, formData.about);
-  //userInfo.setUserInfo(user.name, user.about);
-  userInfo.setUserInfo(userData.name, userData.about);
   formProfileEditModal.setLoading(true);
-  formProfileEditModal.close();
   api
-    .updateUserProfile(userInfo)
+    .updateUserProfile(userData)
     .then(() => {
-      //const userInfo = renderCard(res);
-      // cardSection.addItem(userInfo);
-      const updateUserProfile = new PopupWithForm(
-        ".card__title",
-        ".card__description"
-      );
-      updateUserProfile.close();
+      userInfo.setUserInfo(userData.name, userData.about);
+      formProfileEditModal.close();
     })
     .catch((err) => {
       console.error(err);
@@ -148,12 +138,9 @@ const deleteCardPopup = new PopupWithConfirmation(selectors.deleteCardPopup);
 function handleDeleteButton(cardID, card) {
   deleteCardPopup.open();
   deleteCardPopup.setSubmitAction(() => {
-    //deleteCardPopup.renderLoading(true);
     api
       .deleteCard(cardID)
       .then(() => {
-        //cardElement.remove();
-        //cardID.deleteCard();
         card.removeCard();
         deleteCardPopup.close();
       })
@@ -207,17 +194,16 @@ const addCardPopup = new PopupWithForm(
   handleAddCardFormSubmit
 );
 
-addCardPopup.setEventListeners();
-
 //eventListerners for opening profile and add card modals/popups
 const formProfileEditModal = new PopupWithForm(
   selectors.profileEditModal,
   handleProfileEditSubmit
 );
-addCardPopup.setEventListeners();
+
+formProfileEditModal.setEventListeners();
 
 function handleAddCardFormSubmit(cardData) {
-  formProfileEditModal.setLoading(true);
+  addCardPopup.setLoading(true);
   api
     .addCard(cardData)
     .then((res) => {
@@ -230,13 +216,13 @@ function handleAddCardFormSubmit(cardData) {
     })
 
     .finally(() => {
-      formProfileEditModal.setLoading(false);
+      addCardPopup.setLoading(false);
     });
 }
-
 addCardPopup.setEventListeners();
 
 const updateAvatarForm = new PopupWithForm("#profile-image-modal", (avatar) => {
+  updateAvatarForm.setLoading(true);
   api
     .updateAvatar(avatar.link)
     .then((user) => {
@@ -245,6 +231,9 @@ const updateAvatarForm = new PopupWithForm("#profile-image-modal", (avatar) => {
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      updateAvatarForm.setLoading(false);
     });
 });
 
