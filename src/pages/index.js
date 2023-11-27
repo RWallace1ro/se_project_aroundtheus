@@ -5,7 +5,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-import { selectors } from "../utils/constants.js";
+import { initialCards, selectors } from "../utils/constants.js";
 import { validationSettings } from "../utils/constants.js";
 import { Api } from "../components/Api.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
@@ -94,9 +94,31 @@ const userInfo = new UserInfo(
   ".profile__image"
 );
 
-function handleProfileEditSubmit(formData) {
-  userInfo.setUserInfo(formData.title, formData.description);
+function handleProfileEditSubmit(userData) {
+  //userInfo.setUserInfo(formData.title, formData.description);
+  //userInfo.setUserInfo(formData.name, formData.about);
+  //userInfo.setUserInfo(user.name, user.about);
+  userInfo.setUserInfo(userData.name, userData.about);
+  formProfileEditModal.setLoading(true);
   formProfileEditModal.close();
+  api
+    .updateUserProfile(userInfo)
+    .then(() => {
+      //const userInfo = renderCard(res);
+      // cardSection.addItem(userInfo);
+      const updateUserProfile = new PopupWithForm(
+        ".card__title",
+        ".card__description"
+      );
+      updateUserProfile.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+
+    .finally(() => {
+      formProfileEditModal.setLoading(false);
+    });
 }
 
 function handleLikeClick(card) {
@@ -192,10 +214,10 @@ const formProfileEditModal = new PopupWithForm(
   selectors.profileEditModal,
   handleProfileEditSubmit
 );
-formProfileEditModal.setEventListeners();
+addCardPopup.setEventListeners();
 
 function handleAddCardFormSubmit(cardData) {
-  addCardPopup.setLoading(true);
+  formProfileEditModal.setLoading(true);
   api
     .addCard(cardData)
     .then((res) => {
@@ -208,9 +230,11 @@ function handleAddCardFormSubmit(cardData) {
     })
 
     .finally(() => {
-      addCardPopup.setLoading(false, "addCard");
+      formProfileEditModal.setLoading(false);
     });
 }
+
+addCardPopup.setEventListeners();
 
 const updateAvatarForm = new PopupWithForm("#profile-image-modal", (avatar) => {
   api
