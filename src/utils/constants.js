@@ -34,6 +34,7 @@ export const selectors = {
   profileEditModal: "#profile-edit-modal",
   userInfoProfileTitle: "#profile-title-input",
   userInfoProfileDescription: "#profile-description-input",
+  deleteCardPopup: "#delete-card-modal",
 };
 
 export const validationSettings = {

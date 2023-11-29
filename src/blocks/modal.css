@@ -34,6 +34,7 @@
   flex-basis: min-content;
   max-width: 430px;
 }
+
 .modal__close {
   border: none;
   background-color: transparent;
@@ -136,6 +137,10 @@
 }
 
 .modal__container_type_preview {
+  background: none;
+}
+
+.modal__continer_type_avatar {
   background: none;
 }
 

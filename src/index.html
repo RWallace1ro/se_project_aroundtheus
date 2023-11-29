@@ -24,19 +24,26 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/jacques-cousteau.png')%>"
-            class="profile__image"
-            alt="Avatar"
-          />
+          <div style="position: relative; margin-right: 30px">
+            <img
+              src="<%=require('./images/jacques-cousteau.png')%>"
+              class="profile__image"
+              alt="Avatar"
+            />
+            <button
+              class="avatar__edit-button"
+              id="avatar-edit-button"
+              type="button"
+            ></button>
+          </div>
           <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
+            <h1 class="profile__title"></h1>
             <button
               class="profile__edit-button"
               id="profile-edit-button"
               type="button"
             ></button>
-            <p class="profile__description">Explorer</p>
+            <p class="profile__description"></p>
           </div>
           <button class="profile__add-button" type="button"></button>
         </section>
@@ -60,7 +67,7 @@
         <form class="modal__form">
           <input
             class="modal__input"
-            name="title"
+            name="name"
             type="text"
             id="profile-title-input"
             placeholder="Name"
@@ -71,7 +78,7 @@
           <span class="modal__error" id="profile-title-input-error"></span>
           <input
             class="modal__input"
-            name="description"
+            name="about"
             type="text"
             id="profile-description-input"
             placeholder="Description"
@@ -83,6 +90,30 @@
             class="modal__error"
             id="profile-description-input-error"
           ></span>
+          <button class="modal__button" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+    <!--UpdateAvatarForm-->
+    <div class="modal" id="profile-image-modal">
+      <div class="modal__container modal__container_type_avatar">
+        <button
+          class="modal__close"
+          id="update-avatar-close-button"
+          type="button"
+        ></button>
+        <h3 class="modal__heading">Change profile picture</h3>
+        <form class="modal__form">
+          <span class="modal__error" id="avatar-input-error"></span>
+          <input
+            class="modal__input"
+            name="link"
+            type="URL"
+            id="avatar-input"
+            placeholder="Image URL"
+            required
+          />
+          <span class="modal__error" id="avatar-input-error"></span>
           <button class="modal__button" type="submit">Save</button>
         </form>
       </div>
@@ -99,7 +130,7 @@
         <form class="modal__form">
           <input
             class="modal__input"
-            name="title"
+            name="name"
             type="text"
             id="add-card-input"
             placeholder="Title"
@@ -110,7 +141,7 @@
           <span class="modal__error" id="add-card-input-error"></span>
           <input
             class="modal__input"
-            name="description"
+            name="link"
             type="URL"
             id="description-input"
             placeholder="Image URL"
@@ -121,7 +152,21 @@
         </form>
       </div>
     </div>
-    <!--Preview image modal-->
+    <!-- Delete card modal -->
+    <div class="modal" id="delete-card-modal">
+      <div class="modal__container modal__container_type_delete">
+        <button
+          class="modal__close"
+          id="delete-close-button"
+          type="button"
+        ></button>
+        <h3 class="modal__heading">Are you sure?</h3>
+        <form class="modal__form">
+          <button class="modal__button" type="submit">Yes</button>
+        </form>
+      </div>
+    </div>
+    <!-- Preview image modal -->
     <div class="modal" id="preview-image-modal">
       <div class="modal__container modal__container_type_preview">
         <button
