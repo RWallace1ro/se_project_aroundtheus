@@ -10,8 +10,8 @@ class Card {
     this._link = link;
     this._cardID = cardID;
     this._id = _id;
-    this.isLiked = isLiked;
-    this.cardData = cardData;
+    this._isLiked = isLiked;
+    this._cardData = cardData;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleLikeClick = handleLikeClick;
@@ -39,12 +39,12 @@ class Card {
     handleDeleteButton(cardID);
   }
 
-  isLiked() {
-    return this.isLiked;
+  _isLiked() {
+    return this._isLiked;
   }
 
-  _setLikes() {
-    if (this.isLiked) {
+  _renderLikes() {
+    if (this._isLiked) {
       this._likeButton.classList.add("card__like-button_active");
     } else {
       this._likeButton.classList.remove("card__like-button_active");
@@ -56,8 +56,9 @@ class Card {
     this._cardElement = null;
   }
 
-  handleLikeButton() {
-    this._likeButton.classList.toggle("card__like-button_active");
+  updateLikes(isLiked) {
+    this._isLiked = isLiked;
+    this._renderLikes();
   }
 
   _getTemplate() {
@@ -78,7 +79,7 @@ class Card {
     );
 
     this._cardElement.querySelector(".card__title").textContent = this._name;
-    this._setLikes();
+    this._renderLikes();
     this._setEventListeners();
     return this._cardElement;
   }

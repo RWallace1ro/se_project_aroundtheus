@@ -38,15 +38,4 @@ export default class PopupWithForm extends Popup {
       this._submitButton.textContent = this._submitButtonText;
     }
   }
-
-  renderLoading() {
-    const img = document.createElement("img");
-    img.src = imageSrc;
-    return img;
-  }
-
-  loadImage() {
-    this.image = image;
-    this._popupForm.append(image);
-  }
 }

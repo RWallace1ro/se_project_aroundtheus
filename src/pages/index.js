@@ -69,6 +69,11 @@ api
     console.error(err);
   });
 
+// Promise.all([api.getUserInfo()]).then((userData) => {
+//   userInfo.setUserInfo(userData.name, userData.about);
+//   userInfo.setAvatar(userData.avatar);
+// });
+
 /*----------------------------------------------------------------------------------------------------------*/
 /*                                                 Validation                                                                                       */
 /*--------------------------------------------------------------------------------------------------------- */
@@ -112,18 +117,19 @@ function handleProfileEditSubmit(userData) {
 }
 
 function handleLikeClick(card) {
-  if (card.isLiked) {
+  if (card._isLiked) {
     api
       .dislikeCard(card._id)
       .then(() => {
-        card.handleLikeButton();
+        card.updateLikes();
       })
+
       .catch((err) => console.error(err));
   } else {
     api
       .likeCard(card._id)
       .then(() => {
-        card.handleLikeButton();
+        card.updateLikes(card._id);
       })
       .catch((err) => console.error(err));
   }
@@ -135,8 +141,10 @@ function handleImageClick(imageData) {
 
 const deleteCardPopup = new PopupWithConfirmation(selectors.deleteCardPopup);
 
-function handleDeleteButton(cardID, card) {
+function handleDeleteSubmit(cardID, card) {
+  // deleteCardPopup.setLoading(true);
   deleteCardPopup.open();
+  // deleteCardPopup.setLoading(true);
   deleteCardPopup.setSubmitAction(() => {
     api
       .deleteCard(cardID)
@@ -146,10 +154,11 @@ function handleDeleteButton(cardID, card) {
       })
       .catch((err) => {
         console.log(err);
-      })
-      .finally(() => {
-        //deleteCardPopup.renderLoading(false);
       });
+
+    // .finally(() => {
+    //   deleteCardPopup.setLoading(false);
+    // });
   });
 }
 
@@ -176,7 +185,7 @@ function renderCard(cardData) {
     selectors.cardTemplate,
     handleImageClick,
     handleLikeClick,
-    handleDeleteButton
+    handleDeleteSubmit
   );
   return card.getView();
 }
