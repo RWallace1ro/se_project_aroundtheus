@@ -36,7 +36,7 @@ class Card {
 
   handleDeleteSubmit() {
     const cardID = this.cardData;
-    handleDeleteButton(cardID);
+    this.handleDeleteButton(cardID);
   }
 
   _isLiked() {

@@ -137,8 +137,8 @@ function handleImageClick(imageData) {
 const deleteCardPopup = new PopupWithConfirmation(selectors.deleteCardPopup);
 
 function handleDeleteButton(cardID, card) {
+  deleteCardPopup.setLoading(true);
   deleteCardPopup.open();
-  // deleteCardPopup.setLoading(true);
   deleteCardPopup.setSubmitAction(() => {
     api
       .deleteCard(cardID)
@@ -148,10 +148,10 @@ function handleDeleteButton(cardID, card) {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        deleteCardPopup.setLoading(false);
       });
-    // .finally(() => {
-    //   deleteCardPopup.setLoading(false);
-    // });
   });
 }
 

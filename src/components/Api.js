@@ -13,19 +13,14 @@ export class Api {
 
   getInitialCards() {
     return fetch(`${this._url}/cards`, {
-      headers: {
-        authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
-      },
+      headers: this._headers,
     }).then(this._processResponse);
   }
 
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
-      headers: {
-        authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -37,10 +32,7 @@ export class Api {
   updateUserProfile(userData) {
     return fetch(`${this._url}/users/me`, {
       method: "PATCH",
-      headers: {
-        authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify(userData),
     }).then((res) => {
       if (res.ok) {
@@ -53,10 +45,7 @@ export class Api {
   updateAvatar(avatar) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: "PATCH",
-      headers: {
-        authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({ avatar }),
     }).then((res) => {
       if (res.ok) {
@@ -69,13 +58,10 @@ export class Api {
   getCards(name, link, _id) {
     return fetch(`${this._url}/cards`, {
       method: "GET",
-      headers: {
-        name: name,
-        link: link,
-        _id: _id,
-        authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
+      name: name,
+      link: link,
+      _id: _id,
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -87,10 +73,7 @@ export class Api {
   addCard({ name, link }) {
     return fetch(`${this._url}/cards`, {
       method: "POST",
-      headers: {
-        authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: name,
         link: link,
@@ -106,10 +89,7 @@ export class Api {
   deleteCard(cardID) {
     return fetch(`${this._url}/cards/${cardID}`, {
       method: "DELETE",
-      headers: {
-        authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -121,10 +101,7 @@ export class Api {
   likeCard(id) {
     return fetch(`${this._url}/cards/${id}/likes`, {
       method: "PUT",
-      headers: {
-        authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -136,9 +113,7 @@ export class Api {
   dislikeCard(id) {
     return fetch(`${this._url}/cards/${id}/likes`, {
       method: "DELETE",
-      headers: {
-        authorization: "fe7e07a4-81c5-490b-807b-e6a7cec619a0",
-      },
+      headers: this._headers,
     }).then((res) => {
       if (res.ok) {
         return res.json();
