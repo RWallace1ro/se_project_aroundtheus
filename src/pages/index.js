@@ -59,20 +59,15 @@ api
     console.error(err);
   });
 
-api
-  .getUserInfo()
-  .then((userData) => {
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, initialCards]) => {
     userInfo.setUserInfo(userData.name, userData.about);
     userInfo.setAvatar(userData.avatar);
+    initialCards = userData;
   })
   .catch((err) => {
     console.error(err);
   });
-
-// Promise.all([api.getUserInfo()]).then((userData) => {
-//   userInfo.setUserInfo(userData.name, userData.about);
-//   userInfo.setAvatar(userData.avatar);
-// });
 
 /*----------------------------------------------------------------------------------------------------------*/
 /*                                                 Validation                                                                                       */
@@ -141,8 +136,7 @@ function handleImageClick(imageData) {
 
 const deleteCardPopup = new PopupWithConfirmation(selectors.deleteCardPopup);
 
-function handleDeleteSubmit(cardID, card) {
-  // deleteCardPopup.setLoading(true);
+function handleDeleteButton(cardID, card) {
   deleteCardPopup.open();
   // deleteCardPopup.setLoading(true);
   deleteCardPopup.setSubmitAction(() => {
@@ -155,7 +149,6 @@ function handleDeleteSubmit(cardID, card) {
       .catch((err) => {
         console.log(err);
       });
-
     // .finally(() => {
     //   deleteCardPopup.setLoading(false);
     // });
@@ -185,7 +178,7 @@ function renderCard(cardData) {
     selectors.cardTemplate,
     handleImageClick,
     handleLikeClick,
-    handleDeleteSubmit
+    handleDeleteButton
   );
   return card.getView();
 }
