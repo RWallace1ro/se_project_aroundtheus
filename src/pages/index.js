@@ -137,9 +137,9 @@ function handleImageClick(imageData) {
 const deleteCardPopup = new PopupWithConfirmation(selectors.deleteCardPopup);
 
 function handleDeleteButton(cardID, card) {
-  deleteCardPopup.setLoading(true);
   deleteCardPopup.open();
   deleteCardPopup.setSubmitAction(() => {
+    deleteCardPopup.setLoading(true);
     api
       .deleteCard(cardID)
       .then(() => {
