@@ -7,7 +7,7 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import { selectors } from "../utils/constants.js";
 import { validationSettings } from "../utils/constants.js";
-import { Api } from "../components/Api.js";
+import { Api } from "../utils/Api.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 /*---------------------------------------------------------------------------------------------------------*/
 /*                                                Element                                                  */
@@ -40,12 +40,13 @@ const api = new Api({
 
 let cardSection;
 
-api
-  .getInitialCards()
-  .then((res) => {
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, initialCards]) => {
+    userInfo.setUserInfo(userData.name, userData.about);
+    userInfo.setAvatar(userData.avatar);
     cardSection = new Section(
       {
-        items: res,
+        items: initialCards,
         renderer: (data) => {
           const card = renderCard(data);
           cardSection.addItem(card);
@@ -54,16 +55,6 @@ api
       selectors.cardSection
     );
     cardSection.renderItems();
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-
-Promise.all([api.getUserInfo(), api.getInitialCards()])
-  .then(([userData, initialCards]) => {
-    userInfo.setUserInfo(userData.name, userData.about);
-    userInfo.setAvatar(userData.avatar);
-    initialCards = userData;
   })
   .catch((err) => {
     console.error(err);

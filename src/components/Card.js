@@ -34,11 +34,6 @@ class Card {
     });
   }
 
-  handleDeleteSubmit() {
-    const cardID = this.cardData;
-    this.handleDeleteButton(cardID);
-  }
-
   _isLiked() {
     return this._isLiked;
   }
