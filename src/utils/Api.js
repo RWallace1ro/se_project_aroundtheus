@@ -22,11 +22,6 @@ export class Api {
       method: "GET",
       headers: this._headers,
     }).then(this._processResponse);
-    //   if (res.ok) {
-    //     return res.json();
-    //   }
-    //   return Promise.reject(`Error: ${res.status}`);
-    // });
   }
 
   updateUserProfile(userData) {
@@ -35,11 +30,6 @@ export class Api {
       headers: this._headers,
       body: JSON.stringify(userData),
     }).then(this._processResponse);
-    //   if (res.ok) {
-    //     return res.json();
-    //   }
-    //   return Promise.reject(`Error: ${res.status}`);
-    // });
   }
 
   updateAvatar(avatar) {
@@ -48,11 +38,6 @@ export class Api {
       headers: this._headers,
       body: JSON.stringify({ avatar }),
     }).then(this._processResponse);
-    //   if (res.ok) {
-    //     return res.json();
-    //   }
-    //   return Promise.reject(`Error: ${res.status}`);
-    // });
   }
 
   getCards(name, link, _id) {
@@ -63,11 +48,6 @@ export class Api {
       link: link,
       _id: _id,
     }).then(this._processResponse);
-    //   if (res.ok) {
-    //     return res.json();
-    //   }
-    //   return Promise.reject(`Error: ${res.status}`);
-    // });
   }
 
   addCard({ name, link }) {
@@ -79,11 +59,6 @@ export class Api {
         link: link,
       }),
     }).then(this._processResponse);
-    //   if (res.ok) {
-    //     return res.json();
-    //   }
-    //   return Promise.reject(`Error: ${res.status}`);
-    // });
   }
 
   deleteCard(cardID) {
@@ -91,11 +66,6 @@ export class Api {
       method: "DELETE",
       headers: this._headers,
     }).then(this._processResponse);
-    //   if (res.ok) {
-    //     return res.json();
-    //   }
-    //   return Promise.reject(`Error: ${res.status}`);
-    // });
   }
 
   likeCard(id) {
@@ -103,11 +73,6 @@ export class Api {
       method: "PUT",
       headers: this._headers,
     }).then(this._processResponse);
-    //   if (res.ok) {
-    //     return res.json();
-    //   }
-    //   return Promise.reject(`Error: ${res.status}`);
-    // });
   }
 
   dislikeCard(id) {
@@ -115,10 +80,5 @@ export class Api {
       method: "DELETE",
       headers: this._headers,
     }).then(this._processResponse);
-    //   if (res.ok) {
-    //     return res.json();
-    //   }
-    //   return Promise.reject(`Error: ${res.status}`);
-    // });
   }
 }
