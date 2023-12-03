@@ -1,10 +1,12 @@
 import Popup from "./Popup.js";
 
-// Change name
 export default class PopupWithConfirmation extends Popup {
-  constructor(popupSelector) {
+  constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
     this._popupForm = this._popupElement.querySelector(".modal__form");
+    this._handleFormSubmit = handleFormSubmit;
+    this._submitButton = this._popupForm.querySelector(".modal__button");
+    this._submitButtonText = this._submitButton.textContent;
   }
 
   setSubmitAction(action) {
@@ -17,5 +19,13 @@ export default class PopupWithConfirmation extends Popup {
       evt.preventDefault();
       this._handleFormSubmit();
     });
+  }
+
+  setLoading(isLoading) {
+    if (isLoading) {
+      this._submitButton.textContent = "loading...";
+    } else {
+      this._submitButton.textContent = this._submitButtonText;
+    }
   }
 }
